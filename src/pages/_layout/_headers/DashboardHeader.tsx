@@ -1,5 +1,6 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+import ThemeContext from '../../../contexts/themeContext';
 import Header, { HeaderLeft, HeaderRight } from '../../../layout/Header/Header';
 import Popovers from '../../../components/bootstrap/Popovers';
 import Button, { IButtonProps } from '../../../components/bootstrap/Button';
@@ -13,9 +14,13 @@ import Dropdown, {
 import showNotification from '../../../components/extras/showNotification';
 import Icon from '../../../components/icon/Icon';
 import Spinner from '../../../components/bootstrap/Spinner';
+import { ChatAvatar } from '../../../components/Chat';
+import Avatar from '../../../components/Avatar';
+import USERS from '../../../common/data/userDummyData';
 
 const DashboardHeader = () => {
 	const { darkModeStatus, setDarkModeStatus } = useDarkMode();
+	const { fullScreenStatus, setFullScreenStatus } = useContext(ThemeContext);
 	const styledBtn: IButtonProps = {
 		color: darkModeStatus ? 'dark' : 'light',
 		hoverShadow: 'default',
@@ -47,24 +52,11 @@ const DashboardHeader = () => {
 	return (
 		<Header>
 			<HeaderLeft>
-				<Popovers
-					title='DashboardHeader.tsx'
-					desc={<code>src/pages/_layout/_headers/DashboardHeader.tsx</code>}>
-					HeaderLeft
-				</Popovers>
-				<code>DashboardHeader.tsx</code>
+				<code>Your Company</code>
 			</HeaderLeft>
 
 			<HeaderRight>
 				<div className='row g-3 align-items-center'>
-					<div className='col-auto'>
-						<Popovers
-							title='DashboardHeader.tsx'
-							desc={<code>src/pages/_layout/_headers/DashboardHeader.tsx</code>}>
-							HeaderRight
-						</Popovers>
-						<code className='ps-3'>DashboardHeader.tsx</code>
-					</div>
 					{/* Dark Mode */}
 					<div className='col-auto'>
 						<Popovers trigger='hover' desc='Dark / Light mode'>
@@ -83,6 +75,18 @@ const DashboardHeader = () => {
 							</Button>
 						</Popovers>
 					</div>
+					{/*	Full Screen */}
+				<div className='col-auto'>
+					<Popovers trigger='hover' desc='Fullscreen'>
+						<Button
+							// eslint-disable-next-line react/jsx-props-no-spreading
+							{...styledBtn}
+							icon={fullScreenStatus ? 'FullscreenExit' : 'Fullscreen'}
+							onClick={() => setFullScreenStatus(!fullScreenStatus)}
+							aria-label='Toggle fullscreen'
+						/>
+					</Popovers>
+				</div>
 					{/* Lang Selector */}
 					<div className='col-auto'>
 						<Dropdown>
@@ -123,7 +127,26 @@ const DashboardHeader = () => {
 							</DropdownMenu>
 						</Dropdown>
 					</div>
+					{/* User Name */}
+					<div className='col-auto'>
+					<div className='text-end'>
+						<div className='fw-bold fs-6 mb-0'>
+							{`${USERS.CHLOE.name} ${USERS.CHLOE.surname}`}
+						</div>
+						<div className='text-muted'>
+							<small>{USERS.CHLOE.position}</small>
+						</div>
+					</div>
+					</div>
+					{/* User Avatar */}
+					<div className='col-auto'>
+					<Avatar srcSet={USERS.CHLOE.srcSet}
+						src={USERS.CHLOE.src} 
+						size={48}
+						color={USERS.CHLOE.color}/>
 				</div>
+				</div>
+		
 			</HeaderRight>
 		</Header>
 	);

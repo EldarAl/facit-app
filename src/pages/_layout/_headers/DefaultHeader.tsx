@@ -10,13 +10,7 @@ const DefaultHeader = () => {
 	return (
 		<Header>
 			<HeaderLeft>
-				<Navigation
-					menu={{ ...pageLayoutTypesPagesMenu }}
-					id='header-top-menu'
-					horizontal={
-						!!width && width >= Number(import.meta.env.VITE_MOBILE_BREAKPOINT_SIZE)
-					}
-				/>
+
 			</HeaderLeft>
 			<HeaderRight>
 				<Popovers

@@ -13,9 +13,6 @@ interface IUserContactProps {
 	src: string;
 	srcSet?: string;
 	color?: TColor | 'link' | 'brand' | 'brand-two' | 'storybook';
-	mail?: string;
-	phone?: string;
-	onChat?(...args: unknown[]): unknown;
 }
 const UserContact: FC<IUserContactProps> = ({
 	name,
@@ -23,55 +20,15 @@ const UserContact: FC<IUserContactProps> = ({
 	src,
 	srcSet,
 	color,
-	mail,
-	phone,
-	onChat,
 	...props
 }) => {
 	return (
 		// eslint-disable-next-line react/jsx-props-no-spreading
-		<Card {...props} className={classNames(props.className)} stretch>
+		<Card {...props} className={classNames(props.className)} >
 			<CardBody className='d-flex align-items-center'>
 				<div className='flex-grow-1'>
 					<div className='fs-5 fw-bold'>{name}</div>
 					{position && <div className='text-muted'>{position}</div>}
-					<div className='row mt-2 g-3'>
-						{mail && (
-							<div className='col-auto'>
-								<Button
-									color='info'
-									icon='Email'
-									isLight
-									aria-label='Mail'
-									tag='a'
-									href={`mailto:${mail}`}
-								/>
-							</div>
-						)}
-						{phone && (
-							<div className='col-auto'>
-								<Button
-									color='info'
-									icon='PhoneIphone'
-									isLight
-									aria-label='Phone'
-									tag='a'
-									href={`tel:${phone}`}
-								/>
-							</div>
-						)}
-						{onChat && (
-							<div className='col-auto'>
-								<Button
-									color='info'
-									icon='Sms'
-									isLight
-									aria-label='Chat'
-									onClick={onChat}
-								/>
-							</div>
-						)}
-					</div>
 				</div>
 				{(src || srcSet) && (
 					<div className='flex-shrink-0'>
@@ -109,18 +66,13 @@ UserContact.propTypes = {
 		'brand-two',
 		'storybook',
 	]),
-	mail: PropTypes.string,
-	phone: PropTypes.string,
-	onChat: PropTypes.func,
+
 };
 UserContact.defaultProps = {
 	className: undefined,
 	position: undefined,
 	srcSet: undefined,
-	color: undefined,
-	mail: undefined,
-	phone: undefined,
-	onChat: undefined,
+	color: undefined
 };
 
 export default UserContact;
