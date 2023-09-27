@@ -5,10 +5,12 @@ import Humans from '../../../assets/img/scene4.png';
 import HumansWebp from '../../../assets/img/scene4.webp';
 import Button from '../../../components/bootstrap/Button';
 import { demoPagesMenu } from '../../../menu';
+import { useNavigate } from 'react-router-dom';
 
 const Page404 = () => {
+	const navigate = useNavigate()
 	return (
-		<PageWrapper title={demoPagesMenu.page404.text}>
+		<PageWrapper title={'Help'}>
 			<Page>
 				<div className='row d-flex align-items-center h-100'>
 					<div className='col-12 d-flex flex-column justify-content-center align-items-center'>
@@ -38,7 +40,8 @@ const Page404 = () => {
 							isLight
 							icon='HolidayVillage'
 							tag='a'
-							href='/'>
+							onClick={()=> navigate('/')}
+							>
 							Homepage
 						</Button>
 					</div>

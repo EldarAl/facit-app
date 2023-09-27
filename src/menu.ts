@@ -1,34 +1,4 @@
-export const summaryPageTopMenu = {
-	intro: { id: 'intro', text: 'Intro', path: '#intro', icon: 'Vrpano', subMenu: null },
-	bootstrap: {
-		id: 'bootstrap',
-		text: 'Bootstrap Components',
-		path: '#bootstrap',
-		icon: 'BootstrapFill',
-		subMenu: null,
-	},
-	storybook: {
-		id: 'storybook',
-		text: 'Storybook',
-		path: '#storybook',
-		icon: 'CustomStorybook',
-		subMenu: null,
-	},
-	formik: {
-		id: 'formik',
-		text: 'Formik',
-		path: '#formik',
-		icon: 'CheckBox',
-		subMenu: null,
-	},
-	apex: {
-		id: 'apex',
-		text: 'Apex Charts',
-		path: '#apex',
-		icon: 'AreaChart',
-		subMenu: null,
-	},
-};
+
 
 export const dashboardPagesMenu = {
 	dashboard: {
@@ -40,6 +10,21 @@ export const dashboardPagesMenu = {
 	},
 };
 
+export const authPages = {
+	signUp: {
+		id: 'signUp',
+		text: 'Sign Up',
+		path: 'auth-pages/sign-up',
+		icon: 'PersonAdd',
+	},
+	login: {
+		id: 'login',
+		text: 'Login',
+		path: 'auth-pages/login',
+		icon: 'Login',
+	},
+
+};
 export const demoPagesMenu = {
 	auth: {
 		id: 'auth',
@@ -49,25 +34,25 @@ export const demoPagesMenu = {
 	connections: {
 		id: 'connections',
 		text: 'Connections',
-		path: 'auth-pages/login',
+		path: 'connections',
 		icon: 'Link',
 	},
-	login: {
+	database: {
 		id: 'login',
 		text: 'Database',
-		path: 'auth-pages/login',
+		path: 'database',
 		icon: 'storage',
 	},
-	page404: {
+	streams: {
 		id: 'streams',
 		text: 'Streams',
-		path: 'auth-pages/sign-up',
+		path: 'streams',
 		icon: 'Stream',
 	},
 	signUp: {
 		id: 'streamsHistory',
 		text: 'Streams history',
-		path: 'auth-pages/sign-up',
+		path: '404',
 		icon: 'History',
 	},
 	// page404: {
@@ -83,12 +68,13 @@ export const pageLayoutTypesPagesMenu = {
 		id: 'layoutTypes',
 		text: 'Support Pages',
 	},
-		page404: {
-		id: 'Page404',
+	help: {
+		id: 'Help',
 		text: 'Help',
-		path: 'auth-pages/404',
+		path: 'help',
 		icon: 'ReportGmailerrorred',
 	},
+
 	// blank: {
 	// 	id: 'blank',
 	// 	text: 'Blank',

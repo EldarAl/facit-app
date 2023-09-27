@@ -9,10 +9,11 @@ import ThemeContext from '../../../contexts/themeContext';
 import Icon from '../../../components/icon/Icon';
 import Aside, { AsideBody, AsideFoot, AsideHead } from '../../../layout/Aside/Aside';
 import Popovers from '../../../components/bootstrap/Popovers';
+import { useNavigate } from "react-router-dom";
 
 const DefaultAside = () => {
 	const { asideStatus, setAsideStatus } = useContext(ThemeContext);
-
+	let navigate = useNavigate();
 
 
 	const { t } = useTranslation(['translation', 'menu']);
@@ -37,7 +38,7 @@ const DefaultAside = () => {
 							role='presentation'
 							className='navigation-item cursor-pointer'
 							onClick={() => {
-								console.log('logout')
+								navigate("/auth-pages/login");
 							}}
 						>
 							<span className='navigation-link navigation-link-pill'>

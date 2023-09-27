@@ -105,7 +105,7 @@ const Login: FC<ILoginProps> = ({ isSignUp }) => {
 					(f) => USERS[f].username.toString() === formik.values.loginUsername,
 				)
 			) {
-				formik.setFieldError('loginUsername', 'No such user found in the system.');
+				formik.setFieldError('loginUsername', 'No such user or password found in the system.');
 			} else {
 				setSignInPassword(true);
 			}
@@ -195,7 +195,7 @@ const Login: FC<ILoginProps> = ({ isSignUp }) => {
 													<Input type='email' autoComplete='email' />
 												</FormGroup>
 											</div>
-											<div className='col-12'>
+											{/* <div className='col-12'>
 												<FormGroup
 													id='signup-name'
 													isFloating
@@ -210,7 +210,7 @@ const Login: FC<ILoginProps> = ({ isSignUp }) => {
 													label='Your surname'>
 													<Input autoComplete='family-name' />
 												</FormGroup>
-											</div>
+											</div> */}
 											<div className='col-12'>
 												<FormGroup
 													id='signup-password'
@@ -237,7 +237,7 @@ const Login: FC<ILoginProps> = ({ isSignUp }) => {
 												<FormGroup
 													id='loginUsername'
 													isFloating
-													label='Your email or username'
+													label='Your email'
 													className={classNames({
 														'd-none': signInPassword,
 													})}>
