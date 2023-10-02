@@ -6,7 +6,20 @@ import CloudBall from "../../../assets/img/abstract/cloud-ball.png";
 import Quadrilateral from "../../../assets/img/abstract/quadrilateral.png";
 import HardSharpDonut from "../../../assets/img/abstract/hald-sharp-donut.png";
 import CommonDatabaseConnectionsTable from "./common/CommonDatabaseConnectionsTable";
+import OffCanvas, {
+  OffCanvasBody,
+  OffCanvasHeader,
+  OffCanvasTitle,
+} from "../../../components/bootstrap/OffCanvas";
+import classNames from "classnames";
+import { FormikHelpers, useFormik } from "formik";
+import useDarkMode from "../../../hooks/useDarkMode";
 
+import { useState } from "react";
+import Button from "../../../components/bootstrap/Button";
+import FormGroup from "../../../components/bootstrap/forms/FormGroup";
+import Select from "../../../components/bootstrap/forms/Select";
+import Input from "../../../components/bootstrap/forms/Input";
 const data: {
   id: number;
   image: string;
@@ -35,8 +48,29 @@ const data: {
 ];
 
 const CoonectionsePage = () => {
+  const { darkModeStatus } = useDarkMode();
+
+  const [upcomingEventsEditOffcanvas, setUpcomingEventsEditOffcanvas] =
+    useState(false);
+  // const handleUpcomingEdit = () => {
+  //   setUpcomingEventsEditOffcanvas(!upcomingEventsEditOffcanvas);
+  // };
+
+  const formik = useFormik({
+    onSubmit<Values>(
+      values: Values,
+      formikHelpers: FormikHelpers<Values>
+    ): void | Promise<any> {
+      return undefined;
+    },
+    initialValues: {
+      connectionName: "ddddd",
+      service: "Exercise Bike",
+    },
+  });
+
   return (
-    <PageWrapper title="Database Page">
+    <PageWrapper title="Connections">
       <Page container="fluid">
         <div className="row">
           <div className="col-12">
@@ -44,9 +78,7 @@ const CoonectionsePage = () => {
           </div>
           <div className="col-12">
             <div className="display-6 fw-normal py-3">
-              <p className="h2 ">
-                Add the necessary connections to services
-              </p>
+              <p className="h2 ">Add the necessary connections to services</p>
             </div>
           </div>
           <div className="row">
@@ -56,12 +88,99 @@ const CoonectionsePage = () => {
                   id={item.id}
                   name={item.name}
                   img={item.image}
+                  onClick={() => setUpcomingEventsEditOffcanvas(true)}
                 />
               </div>
             ))}
           </div>
 
-          <CommonDatabaseConnectionsTable />
+          <CommonDatabaseConnectionsTable
+            handleUpcomingEdit={() => setUpcomingEventsEditOffcanvas(true)}
+          />
+          <OffCanvas
+            setOpen={setUpcomingEventsEditOffcanvas}
+            isOpen={upcomingEventsEditOffcanvas}
+            titleId="upcomingEdit"
+            isBodyScroll
+            placement="end"
+          >
+            <OffCanvasHeader setOpen={setUpcomingEventsEditOffcanvas}>
+              <OffCanvasTitle id="upcomingEdit" tag="h3">
+                Edit Connection
+              </OffCanvasTitle>
+            </OffCanvasHeader>
+            <OffCanvasBody>
+              <div className="row g-4">
+                <div className="col-12">
+                  <p className="h5">Yandex Metrics</p>
+                  <img
+                    src={HardSharpDonut}
+                    alt=""
+                    width={64}
+                    height={64}
+                    className="mx-auto d-block img-fluid mb-3"
+                  />
+                </div>
+                <div className="col-8 mx-auto">
+                  {" "}
+                  <Button
+                    color="info"
+                    className="w-100"
+                    // onClick={() => setUpcomingEventsEditOffcanvas(false)}
+                  >
+                    Connect
+                  </Button>
+                </div>
+                <div className="col-8">
+                  <FormGroup id="account" label="Account">
+                    <Select
+                      id="account"
+                      size="lg"
+                      ariaLabel="Account"
+                      placeholder="Select Account"
+                      // list={Object.keys(data).map((c) => data[c])}
+                      className={classNames("rounded-1", {
+                        "bg-white": !darkModeStatus,
+                      })}
+                      // onChange={(e: { target: { value: any } }) => {
+                      //   formik.handleChange(e);
+
+                      //   if (e.target.value)
+                      //     debounce(
+                      //       () =>
+                      //         onFormSubmit({
+                      //           ...formik.values,
+                      //           category: e.target.value,
+                      //         }),
+                      //       1000
+                      //     )();
+                      // }}
+                      // value={formik.values.category}
+                    />
+                  </FormGroup>
+                </div>
+                <div className="col-12">
+                  <FormGroup id="connectionName" label="Connection name">
+                    <Input
+                      onChange={formik.handleChange}
+                      value={formik.values.connectionName}
+                    />
+                  </FormGroup>
+                </div>
+              </div>
+            </OffCanvasBody>
+            <div className="row m-0">
+              <div className="col-12 p-3">
+                <Button
+                  color="info"
+                  className="w-100"
+                  onClick={() => setUpcomingEventsEditOffcanvas(false)}
+                >
+                  Save
+                </Button>
+              </div>
+            </div>
+          </OffCanvas>
         </div>
       </Page>
     </PageWrapper>

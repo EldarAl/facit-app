@@ -27,11 +27,14 @@ interface ICommonDatabaseProductItemProps {
 	id: string | number;
 	name: string;
 	img: string;
+	onClick: any
+	
 }
 const CommonDatabaseProductItem: FC<ICommonDatabaseProductItemProps> = ({
 	id,
 	name,
 	img,
+	onClick
 }) => {
 	const { themeStatus, darkModeStatus } = useDarkMode();
 
@@ -61,7 +64,8 @@ const CommonDatabaseProductItem: FC<ICommonDatabaseProductItemProps> = ({
 						darkModeStatus ? 'light' : 'dark'
 					}`}
 					size='lg'
-					tag='a'
+					tag='button'
+					onClick={onClick}
 					// to={`../${demoPagesMenu.sales.subMenu.productID.path}/${id}`}
           >
 					Add 

@@ -10,6 +10,21 @@ export const dashboardPagesMenu = {
 	},
 };
 
+export const pages = {
+	plan: {
+		id: 'plan',
+		text: "Plan",
+		path: 'plans',
+
+	},
+	user: {
+		id: 'user',
+		text: 'User Page',
+		path: 'user-settings'
+	},
+
+}
+
 export const authPages = {
 	signUp: {
 		id: 'signUp',
@@ -23,11 +38,18 @@ export const authPages = {
 		path: 'auth-pages/login',
 		icon: 'Login',
 	},
+	page404: {
+		id: 'Page404',
+		text: 'Help',
+		path: 'auth-pages/404',
+		icon: 'ReportGmailerrorred',
+	},
+
 
 };
 export const demoPagesMenu = {
-	auth: {
-		id: 'auth',
+	commonPages: {
+		id: 'commonPages',
 		text: 'Common Pages',
 		icon: 'Extension',
 	},
@@ -49,18 +71,13 @@ export const demoPagesMenu = {
 		path: 'streams',
 		icon: 'Stream',
 	},
-	signUp: {
+	streamsHistory: {
 		id: 'streamsHistory',
 		text: 'Streams history',
-		path: '404',
+		path: 'stream-history',
 		icon: 'History',
 	},
-	// page404: {
-	// 	id: 'Page404',
-	// 	text: 'Help',
-	// 	path: 'auth-pages/404',
-	// 	icon: 'ReportGmailerrorred',
-	// },
+
 };
 
 export const pageLayoutTypesPagesMenu = {

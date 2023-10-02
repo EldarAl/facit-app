@@ -177,17 +177,45 @@ const CommonDatabaseConnectionsTable: FC<ICommonDatabaseConnectionsTableProps> =
 										</Dropdown>
 									</td>
 									<td>
-										<Button
-											isOutline={!darkModeStatus}
-											color='dark'
-											isLight={darkModeStatus}
-											className={classNames('text-nowrap', {
-												'border-light': !darkModeStatus,
-											})}
-											icon='Edit'
-											onClick={handleUpcomingEdit}>
-											Edit
-										</Button>
+									<div className="row g-3">
+                      <div className="col-auto">
+                        <Button
+                          isOutline={!darkModeStatus}
+                          color="dark"
+                          isLight={darkModeStatus}
+                          className={classNames("text-nowrap", {
+                            "border-light": !darkModeStatus,
+                          })}
+                          icon="Edit"
+                          onClick={handleUpcomingEdit}
+                        />
+                      </div>
+                      <div className="col-auto">
+                        <Button
+                          isOutline={!darkModeStatus}
+                          color="dark"
+                          isLight={darkModeStatus}
+                          className={classNames("text-nowrap", {
+                            "border-light": !darkModeStatus,
+                          })}
+                          icon="Receipt Long
+													"
+                          // onClick={handleUpcomingEdit}
+                        />
+                      </div>
+                      <div className="col-auto">
+                        <Button
+                          isOutline={!darkModeStatus}
+                          color="dark"
+                          isLight={darkModeStatus}
+                          className={classNames("text-nowrap", {
+                            "border-light": !darkModeStatus,
+                          })}
+                          icon="Close"
+                          // onClick={handleUpcomingEdit}
+                        />
+                      </div>
+                    </div>
 									</td>
 								</tr>
 							))}

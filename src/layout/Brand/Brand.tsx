@@ -12,11 +12,11 @@ const Brand: FC<IBrandProps> = ({ asideStatus, setAsideStatus }) => {
 	return (
 		<div className='brand'>
 			<div className='brand-logo'>
-				<h1 className='brand-title '>
+				{/* <h1 className='brand-title '>
 					<Link to='/' aria-label='Logo'>
 						<Logo height={32} />
 					</Link>
-				</h1>
+				</h1> */}
 			</div>
 			<button
 				type='button'

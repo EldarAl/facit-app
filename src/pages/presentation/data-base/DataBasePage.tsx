@@ -34,6 +34,7 @@ const data: {
   },
 ];
 
+
 const DataBasePage = () => {
   return (
     <PageWrapper title="Database Page">

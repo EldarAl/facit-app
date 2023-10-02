@@ -4,6 +4,7 @@ import {
   dashboardPagesMenu,
   demoPagesMenu,
   pageLayoutTypesPagesMenu,
+	pages,
 } from "../menu";
 
 
@@ -31,6 +32,9 @@ const APP = {
     () => import("../pages/presentation/connections/ConnectionsPage")
   ),
   STREAMS: lazy(() => import("../pages/presentation/streams/StreamsPage")),
+	STREAMS_HISTORY: lazy(()=> import("../pages/presentation/stream-history/StreamsHistoryPage")),
+	PLANS: lazy(()=> import("../pages/presentation/plans/PlansPage")),
+	USER: lazy(()=> import('../pages/presentation/user/UserPage'))
 };
 
 const PAGE_LAYOUTS = {
@@ -63,22 +67,31 @@ const presentation = [
     path: authPages.signUp.path,
     element: <AUTH.LOGIN isSignUp/>,
   },
+	  /**
+   * Plans page
+   */
+	{
+		path: pages.plan.path,
+		element: <APP.PLANS />
+	},
   /**
-   * Landing
+   * Dashboard page
    */
   {
     path: dashboardPagesMenu.dashboard.path,
     element: <LANDING.DASHBOARD />,
   },
   // {
-  //   path: demoPagesMenu.page404.path,
+  //   path: demoPagesMenu.signUp.path,
   //   element: <AUTH.PAGE_404 />,
   // },
-
-  {
-    path: demoPagesMenu.signUp.path,
-    element: <AUTH.PAGE_404 />,
-  },
+	  /**
+   * User Page
+   */
+	{
+		path: pages.user.path,
+		element: <APP.USER/>
+	},
   /**
    * App > Database
    */
@@ -86,14 +99,27 @@ const presentation = [
     path: demoPagesMenu.database.path,
     element: <APP.DATABASE />,
   },
+	  /**
+   * App > Connections
+   */
   {
     path: demoPagesMenu.connections.path,
     element: <APP.CONNECTIONS />,
   },
+	  /**
+   * App > Streams
+   */
   {
     path: demoPagesMenu.streams.path,
     element: <APP.STREAMS />,
   },
+	  /**
+   * App > Stream History
+   */
+		{
+			path: demoPagesMenu.streamsHistory.path,
+			element: <APP.STREAMS_HISTORY />,
+		},
   /**
    * App > Knowledge
    */

@@ -8,7 +8,7 @@ import Popovers from '../../../components/bootstrap/Popovers';
 
 const DefaultAsidePage = () => {
 	return (
-		<PageWrapper title={pageLayoutTypesPagesMenu.asideTypes.subMenu.defaultAside.text}>
+		<PageWrapper title={"Title"}>
 			<SubHeader>
 				<SubHeaderLeft>
 					<Breadcrumb

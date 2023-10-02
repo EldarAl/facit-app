@@ -17,10 +17,15 @@ import Spinner from "../../../components/bootstrap/Spinner";
 import { ChatAvatar } from "../../../components/Chat";
 import Avatar from "../../../components/Avatar";
 import USERS from "../../../common/data/userDummyData";
+import { Link, useNavigate } from "react-router-dom";
+import Logo from "../../../components/Logo";
+import PlanLogo from "../../../assets/img/abstract/beveled-cube.png";
+import { pages } from "../../../menu";
 
 const DefaultHeader = () => {
   const { darkModeStatus, setDarkModeStatus } = useDarkMode();
   const { fullScreenStatus, setFullScreenStatus } = useContext(ThemeContext);
+  const navigate = useNavigate();
   const styledBtn: IButtonProps = {
     color: darkModeStatus ? "dark" : "light",
     hoverShadow: "default",
@@ -52,11 +57,33 @@ const DefaultHeader = () => {
   return (
     <Header>
       <HeaderLeft>
-        <code>Your Company</code>
+        <div className="brand-logo">
+          <h1 className="brand-title ">
+            <Link to="/" aria-label="Logo">
+              <Logo height={32} />
+            </Link>
+          </h1>
+        </div>
       </HeaderLeft>
 
       <HeaderRight>
         <div className="row g-3 align-items-center">
+          {/* Plan*/}
+          <div className="col-auto">
+            <Popovers trigger="hover" desc="Plan">
+              <Button
+                // eslint-disable-next-line react/jsx-props-no-spreading
+                {...styledBtn}
+                onClick={() => navigate(pages.plan.path)}
+                // className="btn-only-icon"
+                data-tour="dark-mode"
+                aria-label="Toggle dark mode"
+              >
+                <img src={PlanLogo} height={"24"} />
+                <span>Pro Plus</span>
+              </Button>
+            </Popovers>
+          </div>
           {/* Dark Mode */}
           <div className="col-auto">
             <Popovers trigger="hover" desc="Dark / Light mode">
@@ -129,25 +156,33 @@ const DefaultHeader = () => {
               </DropdownMenu>
             </Dropdown>
           </div>
-          {/* User Name */}
-          <div className="col-auto">
-            <div className="text-end">
-              <div className="fw-bold fs-6 mb-0">
-                {`${USERS.CHLOE.name} ${USERS.CHLOE.surname}`}
-              </div>
-              <div className="text-muted">
-                <small>{USERS.CHLOE.position}</small>
+          {/* User */}
+          <div
+            className="col d-flex align-items-center cursor-pointer"
+            onClick={() => navigate(pages.user.path)}
+            role="presentation"
+          >
+            {/* User Name */}
+            <div className="me-3">
+              <div className="text-end">
+                <div className="fw-bold fs-6 mb-0">
+                  {`${USERS.CHLOE.name} ${USERS.CHLOE.surname}`}
+                </div>
+                <div className="text-muted">
+                  <small>{USERS.CHLOE.position}</small>
+                </div>
               </div>
             </div>
-          </div>
-          {/* User Avatar */}
-          <div className="col-auto">
-            <Avatar
-              srcSet={USERS.CHLOE.srcSet}
-              src={USERS.CHLOE.src}
-              size={48}
-              color={USERS.CHLOE.color}
-            />
+            {/* User Avatar */}
+
+            <div className="position-relative">
+              <Avatar
+                srcSet={USERS.CHLOE.srcSet}
+                src={USERS.CHLOE.src}
+                size={48}
+                color={USERS.CHLOE.color}
+              />
+            </div>
           </div>
         </div>
       </HeaderRight>

@@ -1,6 +1,5 @@
 import PageWrapper from "../../../layout/PageWrapper/PageWrapper";
 import Page from "../../../layout/Page/Page";
-import CommonDatabaseProductItem from "./common/CommonDatabaseProductItem";
 import BeveledCone from "../../../assets/img/abstract/beveled-cone.png";
 import CloudBall from "../../../assets/img/abstract/cloud-ball.png";
 import Quadrilateral from "../../../assets/img/abstract/quadrilateral.png";
@@ -12,6 +11,7 @@ import { useFormik } from "formik";
 import classNames from "classnames";
 import useDarkMode from "../../../hooks/useDarkMode";
 import Select from "../../../components/bootstrap/forms/Select";
+import Icon from "../../../components/icon/Icon";
 
 const StreamsPage = () => {
   const { darkModeStatus } = useDarkMode();
@@ -67,7 +67,7 @@ const StreamsPage = () => {
   };
 
   return (
-    <PageWrapper title="Database Page">
+    <PageWrapper title="Streams">
       <Page container="fluid">
         <div className="row">
           <div className="col-12">
@@ -79,92 +79,93 @@ const StreamsPage = () => {
                 Stream is a configured flow of data between a connection and a
                 database. Add the streams you want here
               </p>
-           
             </div>
           </div>
           <div
-                className="col-xxl-6 mx-auto text-center my-5"
-                data-tour="knowledge-filter"
-              >
-                <form
-                  className={classNames(
-                    "row",
-                    "pb-4 px-3 mx-0 g-4",
-                    "rounded-3",
-                    [`bg-l${darkModeStatus ? "o25" : "10"}-primary`]
-                  )}
-                  onSubmit={formik.handleSubmit}
-                >
-                                    <div className="col-md-5">
-                  <Select
-                      id="connection"
-                      size="lg"
-                      ariaLabel="Connection"
-                      placeholder="Connection"
-                      list={Object.keys(CATEGORIES).map((c) => CATEGORIES[c])}
-                      className={classNames("rounded-1", {
-                        "bg-white": !darkModeStatus,
-                      })}
-                      onChange={(e: { target: { value: any } }) => {
-                        formik.handleChange(e);
+            className="col-xxl-6 mx-auto text-center my-5"
+            data-tour="knowledge-filter"
+          >
+            <form
+              className={classNames("row", "pb-4 px-3 mx-0 g-4", "rounded-3", [
+                `bg-l${darkModeStatus ? "o25" : "10"}-primary`,
+              ])}
+              onSubmit={formik.handleSubmit}
+            >
+              <div className="col-md-4">
+                <Select
+                  id="connection"
+                  size="lg"
+                  ariaLabel="Connection"
+                  placeholder="Connection"
+                  list={Object.keys(CATEGORIES).map((c) => CATEGORIES[c])}
+                  className={classNames("rounded-1", {
+                    "bg-white": !darkModeStatus,
+                  })}
+                  onChange={(e: { target: { value: any } }) => {
+                    formik.handleChange(e);
 
-                        if (e.target.value)
-                          debounce(
-                            () =>
-                              onFormSubmit({
-                                ...formik.values,
-                                category: e.target.value,
-                              }),
-                            1000
-                          )();
-                      }}
-                      value={formik.values.category}
-                    />
-                  </div>
-                  <div className="col-md-5">
-                    <Select
-                      id="database"
-                      size="lg"
-                      ariaLabel="Database"
-                      placeholder="Database"
-                      list={Object.keys(CATEGORIES).map((c) => CATEGORIES[c])}
-                      className={classNames("rounded-1", {
-                        "bg-white": !darkModeStatus,
-                      })}
-                      onChange={(e: { target: { value: any } }) => {
-                        formik.handleChange(e);
-
-                        if (e.target.value)
-                          debounce(
-                            () =>
-                              onFormSubmit({
-                                ...formik.values,
-                                category: e.target.value,
-                              }),
-                            1000
-                          )();
-                      }}
-                      value={formik.values.category}
-                    />
-                  </div>
-
-                  <div className="col-md-2">
-                    <Button
-                      size="lg"
-                      
-                      color="primary"
-                      className="w-100"
-                      rounded={1}
-                      onClick={formik.resetForm}
-                      type="submit"
-                      // isDisable={
-                      //   !(formik.values.search || formik.values.category)
-                      // }
-                      aria-label="Submit"
-                    >Add</Button>
-                  </div>
-                </form>
+                    if (e.target.value)
+                      debounce(
+                        () =>
+                          onFormSubmit({
+                            ...formik.values,
+                            category: e.target.value,
+                          }),
+                        1000
+                      )();
+                  }}
+                  value={formik.values.category}
+                />
               </div>
+              <div className="col-md-1">
+              <Icon icon="Trending Flat" size={"3x"} />
+
+              </div>
+              <div className="col-md-4">
+                <Select
+                  id="database"
+                  size="lg"
+                  ariaLabel="Database"
+                  placeholder="Database"
+                  list={Object.keys(CATEGORIES).map((c) => CATEGORIES[c])}
+                  className={classNames("rounded-1", {
+                    "bg-white": !darkModeStatus,
+                  })}
+                  onChange={(e: { target: { value: any } }) => {
+                    formik.handleChange(e);
+
+                    if (e.target.value)
+                      debounce(
+                        () =>
+                          onFormSubmit({
+                            ...formik.values,
+                            category: e.target.value,
+                          }),
+                        1000
+                      )();
+                  }}
+                  value={formik.values.category}
+                />
+              </div>
+
+              <div className="col-md-3">
+                <Button
+                  size="lg"
+                  color="primary"
+                  className="w-100"
+                  rounded={1}
+                  onClick={formik.resetForm}
+                  type="submit"
+                  // isDisable={
+                  //   !(formik.values.search || formik.values.category)
+                  // }
+                  aria-label="Submit"
+                >
+                  Add
+                </Button>
+              </div>
+            </form>
+          </div>
 
           <CommonDatabaseConnectionsTable />
         </div>
