@@ -22,7 +22,7 @@ i18n
 	// for all options read: https://www.i18next.com/overview/configuration-options
 	.init({
 		backend: {
-			loadPath: import.meta.env.PROD ? '/my/public/locales/{{lng}}/{{ns}}.json' :'/public/locales/{{lng}}/{{ns}}.json'
+			loadPath: import.meta.env.PROD ? '/my/locales/{{lng}}/{{ns}}.json' :'/public/locales/{{lng}}/{{ns}}.json'
 		},
 		fallbackLng: 'ru',
 		// debug: false,
