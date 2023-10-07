@@ -6,11 +6,12 @@ import HumansWebp from '../../../assets/img/scene4.webp';
 import Button from '../../../components/bootstrap/Button';
 import { demoPagesMenu } from '../../../menu';
 import { useNavigate } from 'react-router-dom';
+import useLang from '../../../hooks/useLang';
 
 const Page404 = () => {
 	const navigate = useNavigate()
 	return (
-		<PageWrapper title={'Help'}>
+		<PageWrapper title={useLang("Page not found")}>
 			<Page>
 				<div className='row d-flex align-items-center h-100'>
 					<div className='col-12 d-flex flex-column justify-content-center align-items-center'>
@@ -20,9 +21,9 @@ const Page404 = () => {
 							404
 						</div>
 						<div
-							className='text-dark fw-bold'
+							className='text-primary fw-bold'
 							style={{ fontSize: 'calc(1.5rem + 1.5vw)' }}>
-							Page not found
+							{useLang("Page not found")}
 						</div>
 					</div>
 					<div className='col-12 d-flex align-items-baseline justify-content-center'>
@@ -42,7 +43,7 @@ const Page404 = () => {
 							tag='a'
 							onClick={()=> navigate('/')}
 							>
-							Homepage
+							{useLang("Homepage")}
 						</Button>
 					</div>
 				</div>

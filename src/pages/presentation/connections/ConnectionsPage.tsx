@@ -20,6 +20,7 @@ import Button from "../../../components/bootstrap/Button";
 import FormGroup from "../../../components/bootstrap/forms/FormGroup";
 import Select from "../../../components/bootstrap/forms/Select";
 import Input from "../../../components/bootstrap/forms/Input";
+import useLang from "../../../hooks/useLang";
 const data: {
   id: number;
   image: string;
@@ -52,6 +53,7 @@ const CoonectionsePage = () => {
 
   const [upcomingEventsEditOffcanvas, setUpcomingEventsEditOffcanvas] =
     useState(false);
+  const [isEdit, setIsEdit] = useState(false);
   // const handleUpcomingEdit = () => {
   //   setUpcomingEventsEditOffcanvas(!upcomingEventsEditOffcanvas);
   // };
@@ -64,21 +66,23 @@ const CoonectionsePage = () => {
       return undefined;
     },
     initialValues: {
-      connectionName: "ddddd",
+      connectionName: "Yandex",
       service: "Exercise Bike",
     },
   });
 
   return (
-    <PageWrapper title="Connections">
+    <PageWrapper title={useLang("Connections")}>
       <Page container="fluid">
         <div className="row">
           <div className="col-12">
-            <div className="display-4 fw-bold py-3">Connections</div>
+            <div className="display-4 fw-bold py-3">
+              {useLang("Connections")}
+            </div>
           </div>
           <div className="col-12">
             <div className="display-6 fw-normal py-3">
-              <p className="h2 ">Add the necessary connections to services</p>
+              <p className="h2 ">{useLang("Connections Title")}</p>
             </div>
           </div>
           <div className="row">
@@ -88,14 +92,20 @@ const CoonectionsePage = () => {
                   id={item.id}
                   name={item.name}
                   img={item.image}
-                  onClick={() => setUpcomingEventsEditOffcanvas(true)}
+                  onClick={() => {
+                    setIsEdit(false);
+                    setUpcomingEventsEditOffcanvas(true);
+                  }}
                 />
               </div>
             ))}
           </div>
 
           <CommonDatabaseConnectionsTable
-            handleUpcomingEdit={() => setUpcomingEventsEditOffcanvas(true)}
+            handleUpcomingEdit={() => {
+              setIsEdit(true);
+              setUpcomingEventsEditOffcanvas(true);
+            }}
           />
           <OffCanvas
             setOpen={setUpcomingEventsEditOffcanvas}
@@ -106,7 +116,8 @@ const CoonectionsePage = () => {
           >
             <OffCanvasHeader setOpen={setUpcomingEventsEditOffcanvas}>
               <OffCanvasTitle id="upcomingEdit" tag="h3">
-                Edit Connection
+                {isEdit ? useLang("Edit") : useLang("Add")}{" "}
+                {useLang("Connection").toLowerCase()}
               </OffCanvasTitle>
             </OffCanvasHeader>
             <OffCanvasBody>
@@ -128,17 +139,19 @@ const CoonectionsePage = () => {
                     className="w-100"
                     // onClick={() => setUpcomingEventsEditOffcanvas(false)}
                   >
-                    Connect
+                    {useLang("Connect")}
                   </Button>
                 </div>
                 <div className="col-8">
-                  <FormGroup id="account" label="Account">
+                  <FormGroup id="account" label={useLang("Account")}>
                     <Select
                       id="account"
                       size="lg"
                       ariaLabel="Account"
-                      placeholder="Select Account"
-                      // list={Object.keys(data).map((c) => data[c])}
+                      placeholder={useLang("Select Account")}
+                      list={data.map((c) => {
+                        return { value: c.id, text: c.name };
+                      })}
                       className={classNames("rounded-1", {
                         "bg-white": !darkModeStatus,
                       })}
@@ -160,8 +173,12 @@ const CoonectionsePage = () => {
                   </FormGroup>
                 </div>
                 <div className="col-12">
-                  <FormGroup id="connectionName" label="Connection name">
+                  <FormGroup
+                    id="connectionName"
+                    label={useLang("Connection name")}
+                  >
                     <Input
+                      size={"lg"}
                       onChange={formik.handleChange}
                       value={formik.values.connectionName}
                     />
@@ -176,7 +193,7 @@ const CoonectionsePage = () => {
                   className="w-100"
                   onClick={() => setUpcomingEventsEditOffcanvas(false)}
                 >
-                  Save
+                  {useLang("Save")}
                 </Button>
               </div>
             </div>

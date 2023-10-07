@@ -15,6 +15,7 @@ import Badge from '../../../components/bootstrap/Badge';
 import USERS from '../../../common/data/userDummyData';
 import useDarkMode from '../../../hooks/useDarkMode';
 import useTourStep from '../../../hooks/useTourStep';
+import useLang from '../../../hooks/useLang';
 
 const KnowledgeViewPage = () => {
 	useTourStep(16);
@@ -30,18 +31,9 @@ const KnowledgeViewPage = () => {
 			<SubHeader>
 				<SubHeaderLeft>
 					<Button color='info' isLink icon='ArrowBack' onClick={() => navigate(-1)}>
-						Back to List
+						{useLang("Back")}
 					</Button>
 					<SubheaderSeparator />
-					{!!item.tags &&
-						// eslint-disable-next-line react/prop-types
-						item.tags.map((tag) => (
-							<div key={tag.text} className='col-auto'>
-								<Badge isLight color={tag.color} className='px-3 py-2'>
-									{tag.text}
-								</Badge>
-							</div>
-						))}
 				</SubHeaderLeft>
 				<SubHeaderRight>
 					<span className='text-muted fst-italic'>Written by</span>

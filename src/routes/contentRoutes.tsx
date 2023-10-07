@@ -10,7 +10,7 @@ import {
 
 const LANDING = {
   DASHBOARD: lazy(
-    () => import("../pages/presentation/dashboard/DashboardPage")
+    () => import("../pages/presentation/home/HomePage")
   ),
 };
 const AUTH = {
@@ -47,12 +47,6 @@ const PAGE_LAYOUTS = {
   ),
   CONTENT: lazy(() => import("../pages/presentation/page-layouts/OnlyContent")),
   BLANK: lazy(() => import("../pages/presentation/page-layouts/Blank")),
-  ASIDE: lazy(
-    () => import("../pages/presentation/aside-types/DefaultAsidePage")
-  ),
-  MINIMIZE_ASIDE: lazy(
-    () => import("../pages/presentation/aside-types/MinimizeAsidePage")
-  ),
 };
 
 const presentation = [

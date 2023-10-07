@@ -9,6 +9,7 @@ import Card, {
 } from '../../../components/bootstrap/Card';
 import Button from '../../../components/bootstrap/Button';
 import Chart, { IChartOptions } from '../../../components/extras/Chart';
+import useLang from '../../../hooks/useLang';
 
 interface ISalePerTab {
 	[key: string]: 'Day' | 'Week' | 'Month';
@@ -69,13 +70,6 @@ const CommonSalePerformance = () => {
 		DAY: {
 			series: [
 				{
-					name: 'Last Day',
-					data: [
-						4, 5, 2, 4, 3, 5, 5, 8, 14, 35, 43, 12, 4, 5, 2, 4, 3, 5, 5, 8, 12, 45, 56,
-						9,
-					],
-				},
-				{
 					name: 'This Day',
 					data: [
 						4, 2, 2, 7, 3, 6, 5, 4, 12, 23, 35, 10, 4, 5, 2, 9, 3, 5, 14, 8, 14, 35, 43,
@@ -94,10 +88,6 @@ const CommonSalePerformance = () => {
 		WEEK: {
 			series: [
 				{
-					name: 'Last Week',
-					data: [31, 40, 28, 51, 42, 109, 100],
-				},
-				{
 					name: 'This Week',
 					data: [11, 32, 45, 32, 34, 52, 41],
 				},
@@ -112,13 +102,6 @@ const CommonSalePerformance = () => {
 		},
 		MONTH: {
 			series: [
-				{
-					name: 'Last Month',
-					data: [
-						31, 40, 28, 51, 42, 109, 100, 70, 30, 56, 21, 43, 12, 45, 67, 32, 46, 21,
-						56, 87, 64, 42, 56, 108, 76, 41, 54,
-					],
-				},
 				{
 					name: 'This Month',
 					data: [
@@ -155,7 +138,7 @@ const CommonSalePerformance = () => {
 			<CardHeader>
 				<CardLabel>
 					<CardTitle tag='div' className='h5'>
-					Successful entries to the database
+					{useLang("Stream entries")}
 					</CardTitle>
 				</CardLabel>
 				<CardActions>
@@ -170,7 +153,7 @@ const CommonSalePerformance = () => {
 						}}
 						isLink={activeSalePerTab !== SALE_PER_TAB.DAY}
 						isLight={activeSalePerTab === SALE_PER_TAB.DAY}>
-						Day
+						{useLang("Day")}
 					</Button>
 					<Button
 						color='info'
@@ -183,7 +166,7 @@ const CommonSalePerformance = () => {
 						}}
 						isLink={activeSalePerTab !== SALE_PER_TAB.WEEK}
 						isLight={activeSalePerTab === SALE_PER_TAB.WEEK}>
-						Week
+						{useLang("Week")}
 					</Button>
 					<Button
 						color='info'
@@ -196,7 +179,7 @@ const CommonSalePerformance = () => {
 						}}
 						isLink={activeSalePerTab !== SALE_PER_TAB.MONTH}
 						isLight={activeSalePerTab === SALE_PER_TAB.MONTH}>
-						Month
+						{useLang("Month")}
 					</Button>
 				</CardActions>
 			</CardHeader>

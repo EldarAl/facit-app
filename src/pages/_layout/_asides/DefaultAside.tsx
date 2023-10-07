@@ -1,22 +1,19 @@
 import React, { ReactNode, useContext, useState } from 'react';
 import classNames from 'classnames';
-import { useTranslation } from 'react-i18next';
 import Brand from '../../../layout/Brand/Brand';
 import Navigation, { NavigationLine } from '../../../layout/Navigation/Navigation';
-import User from '../../../layout/User/User';
 import { dashboardPagesMenu, demoPagesMenu, pageLayoutTypesPagesMenu } from '../../../menu';
 import ThemeContext from '../../../contexts/themeContext';
 import Icon from '../../../components/icon/Icon';
 import Aside, { AsideBody, AsideFoot, AsideHead } from '../../../layout/Aside/Aside';
 import Popovers from '../../../components/bootstrap/Popovers';
 import { useNavigate } from "react-router-dom";
+import useLang from '../../../hooks/useLang';
 
 const DefaultAside = () => {
 	const { asideStatus, setAsideStatus } = useContext(ThemeContext);
 	let navigate = useNavigate();
 
-
-	const { t } = useTranslation(['translation', 'menu']);
 
 	return (
 		<Aside>
@@ -48,7 +45,7 @@ const DefaultAside = () => {
 										className='navigation-icon'
 									/>
 									<span className='navigation-text'>
-										{t('menu:Logout') as ReactNode}
+										{useLang("Logout")}
 									</span>
 								</span>
 							</span>

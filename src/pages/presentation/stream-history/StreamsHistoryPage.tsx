@@ -15,12 +15,41 @@ import CommonSalePerformance from "../../_common/CRMDashboard/CommonSalePerforma
 import CommonTopStreams from "../../_common/CRMDashboard/CommonTopStreams";
 import CommonStreamLaunchHistory from "../../_common/CRMDashboard/CommonStreamLaunchHistory";
 import CommonIncome from "../../_common/CRMDashboard/CommonIncome";
+import useLang from "../../../hooks/useLang";
+import classNames from "classnames";
+import Select from "../../../components/bootstrap/forms/Select";
+import useDarkMode from "../../../hooks/useDarkMode";
 
 const StreamsHistoryPage = () => {
+  const { darkModeStatus } = useDarkMode();
+
   /**
    * For Tour
    */
   const { currentStep, setCurrentStep } = useTour();
+
+  const data: {
+    id: number;
+    name: string;
+  }[] = [
+    {
+      id: 1,
+      name: "1",
+    },
+    {
+      id: 2,
+      name: "2",
+    },
+    {
+      id: 3,
+      name: "3",
+    },
+    {
+      id: 4,
+      name: "4",
+    },
+  ];
+
   useEffect(() => {
     if (currentStep === 3) setCurrentStep(4);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -62,13 +91,56 @@ const StreamsHistoryPage = () => {
   );
 
   return (
-    <PageWrapper title={"Streams history"}>
+    <PageWrapper title={useLang("Streams history")}>
       <SubHeader>
         <SubHeaderLeft>
-          <Icon icon="Info" className="me-2" size="2x" />
-          <span className="text-muted">Check out latest updates.</span>
+          <Icon icon="Filter Alt" className="me-2" size="2x" />
+          <span className="text-muted">{useLang("Filter")}</span>
         </SubHeaderLeft>
-        <SubHeaderRight>
+        <SubHeaderRight className="col-sm-9">
+          <div className="col-3">
+            <Select
+              id="streamName"
+              size="lg"
+              ariaLabel="Stream name"
+              placeholder={useLang("Stream name")}
+              list={data.map((c) => {
+                return { value: c.id, text: c.name };
+              })}
+              className={classNames("rounded-1", {
+                "bg-white": !darkModeStatus,
+              })}
+            />
+          </div>
+             <div className="col-3">
+            <Select
+              id="connectionName"
+              size="lg"
+              ariaLabel="Connection name"
+              placeholder={useLang("Connection name")}
+              list={data.map((c) => {
+                return { value: c.id, text: c.name };
+              })}
+              className={classNames("rounded-1", {
+                "bg-white": !darkModeStatus,
+              })}
+            />
+          </div>
+          <div className="col-3">
+            <Select
+              id="databaseName"
+              size="lg"
+              ariaLabel="Database name"
+              placeholder={useLang("Database name")}
+              list={data.map((c) => {
+                return { value: c.id, text: c.name };
+              })}
+              className={classNames("rounded-1", {
+                "bg-white": !darkModeStatus,
+              })}
+            />
+          </div>
+
           <Popovers
             placement="bottom-end"
             className="mw-100 overflow-hidden"

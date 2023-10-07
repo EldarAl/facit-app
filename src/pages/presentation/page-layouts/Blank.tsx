@@ -6,7 +6,7 @@ import Popovers from '../../../components/bootstrap/Popovers';
 
 const Blank = () => {
 	return (
-		<PageWrapper title={pageLayoutTypesPagesMenu.blank.text}>
+		<PageWrapper title={""}>
 			<Page>
 				<div className='row d-flex align-items-center h-100'>
 					<div

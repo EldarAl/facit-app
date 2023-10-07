@@ -10,17 +10,18 @@ import Button from '../../../components/bootstrap/Button';
 import useDarkMode from '../../../hooks/useDarkMode';
 import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
 import ScrollspyNav from '../../../components/bootstrap/ScrollspyNav';
+import useLang from '../../../hooks/useLang';
 
 const PlansPage = () => {
 	const { darkModeStatus } = useDarkMode();
 	const [activeElementId, setActiveElementId] = useState<string | null>(null);
 	return (
-		<PageWrapper title={'Plans'}>
+		<PageWrapper title={useLang('Plans')}>
 
 			<Page>
 				<div id='first' className='row scroll-margin'>
 					<div className='col-12 mb-3'>
-						<div className='display-4 fw-bold py-3'>Choose your plan</div>
+						<div className='display-4 fw-bold py-3'></div>
 					</div>
   
 					<div className='col-md-3'>
@@ -31,7 +32,7 @@ const PlansPage = () => {
 										<Icon icon='CustomRocketLaunch' size='7x' color='info' />
 									</div>
 									<div className='col-12'>
-										<h2>Free</h2>
+										<h2>{useLang("Free")}</h2>
 									</div>
 									<div className='col-12'>
 										<h3 className='display-1 fw-bold'>
@@ -64,7 +65,7 @@ const PlansPage = () => {
 											isLight
 											className='w-100 py-3 text-uppercase'
 											size='lg'>
-											Select Plan
+											{useLang("Select Plan")}
 										</Button>
 									</div>
 								</div>
@@ -79,7 +80,7 @@ const PlansPage = () => {
 										<Icon icon='Maps Home Work' size='7x' color='success' />
 									</div>
 									<div className='col-12'>
-										<h2>Starter</h2>
+										<h2>{useLang("Starter")}</h2>
 									</div>
 									<div className='col-12'>
 										<h3 className='display-1 fw-bold'>
@@ -113,7 +114,7 @@ const PlansPage = () => {
 											color='success'
 											className='w-100 py-3 text-uppercase'
 											size='lg'>
-											Select Plan
+											{useLang("Select Plan")}
 										</Button>
 									</div>
 								</div>
@@ -128,7 +129,7 @@ const PlansPage = () => {
 										<Icon icon='CustomFactory' size='7x' color='info' />
 									</div>
 									<div className='col-12'>
-										<h2>Standart</h2>
+										<h2>{useLang("Standart")}</h2>
 									</div>
 									<div className='col-12'>
 										<h3 className='display-1 fw-bold'>
@@ -163,7 +164,7 @@ const PlansPage = () => {
 											isLight
 											className='w-100 py-3 text-uppercase'
 											size='lg'>
-											Select Plan
+											{useLang("Select Plan")}
 										</Button>
 									</div>
 								</div>
@@ -178,7 +179,7 @@ const PlansPage = () => {
 										<Icon icon='CustomRocketLaunch' size='7x' color='warning' />
 									</div>
 									<div className='col-12'>
-										<h2>Pro</h2>
+										<h2>{useLang("Pro")}</h2>
 									</div>
 									<div className='col-12'>
 										<h3 className='display-1 fw-bold'>
@@ -211,7 +212,7 @@ const PlansPage = () => {
 											isLight
 											className='w-100 py-3 text-uppercase'
 											size='lg'>
-											Select Plan
+											{useLang("Select Plan")}
 										</Button>
 									</div>
 								</div>

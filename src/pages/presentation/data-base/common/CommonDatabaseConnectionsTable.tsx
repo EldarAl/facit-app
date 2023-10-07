@@ -37,42 +37,35 @@ import PaginationButtons, {
 } from "../../../../components/PaginationButtons";
 import useSortableData from "../../../../hooks/useSortableData";
 import useDarkMode from "../../../../hooks/useDarkMode";
+import Modal, {
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+  ModalTitle,
+} from "../../../../components/bootstrap/Modal";
+import useLang from "../../../../hooks/useLang";
 
 interface ICommonDatabaseConnectionsTableProps {
   isFluid?: boolean;
+	handleEdit: any;
 }
 const CommonDatabaseConnectionsTable: FC<
   ICommonDatabaseConnectionsTableProps
-> = ({ isFluid }) => {
+> = ({ isFluid, handleEdit }) => {
   const { themeStatus, darkModeStatus } = useDarkMode();
 
   // BEGIN :: Upcoming Events
 
   const [upcomingEventsEditOffcanvas, setUpcomingEventsEditOffcanvas] =
     useState(false);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+
   const handleUpcomingEdit = () => {
     setUpcomingEventsEditOffcanvas(!upcomingEventsEditOffcanvas);
   };
   // END :: Upcoming Events
 
-  const formik = useFormik({
-    onSubmit<Values>(
-      values: Values,
-      formikHelpers: FormikHelpers<Values>
-    ): void | Promise<any> {
-      return undefined;
-    },
-    initialValues: {
-      customerName: "Alison Berry",
-      service: "Exercise Bike",
-      employee: `${USERS.GRACE.name} ${USERS.GRACE.surname}`,
-      location: "Maryland",
-      date: dayjs().add(1, "days").format("YYYY-MM-DD"),
-      time: "10:30",
-      note: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut nisi odio. Nam sit amet pharetra enim. Nulla facilisi. Nunc dictum felis id massa mattis pretium. Mauris at blandit orci. Nunc vulputate vulputate turpis vitae cursus. In sit amet turpis tincidunt, interdum ex vitae, sollicitudin massa. Maecenas eget dui molestie, ullamcorper ante vel, tincidunt nisi. Donec vitae pulvinar risus. In ultricies nisl ac massa malesuada, vel tempus neque placerat.",
-      notify: true,
-    },
-  });
+
 
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState(PER_COUNT["5"]);
@@ -84,7 +77,7 @@ const CommonDatabaseConnectionsTable: FC<
         <CardHeader borderSize={1}>
           <CardLabel icon="Storage" iconColor="info">
             <CardTitle tag="div" className="h5">
-              Database
+              {useLang("Data Bases")}
             </CardTitle>
           </CardLabel>
           <CardActions>
@@ -97,7 +90,7 @@ const CommonDatabaseConnectionsTable: FC<
               target="_blank"
               download
             >
-              Export
+              {useLang("Export")}
             </Button>
           </CardActions>
         </CardHeader>
@@ -106,20 +99,20 @@ const CommonDatabaseConnectionsTable: FC<
             <thead>
               <tr>
                 <th>#</th>
-                <th>Database</th>
+                <th>{useLang("Database")}</th>
                 <th
                   onClick={() => requestSort("date")}
                   className="cursor-pointer text-decoration-underline"
                 >
-                  Date / Time{" "}
+                  {`${useLang("Date")} / ${useLang("Time")}`}
                   <Icon
                     size="lg"
                     className={getClassNamesFor("date")}
                     icon="FilterList"
                   />
                 </th>
-                <th>Active Streams</th>
-                <th>Status</th>
+                <th>{useLang("Active Streams")}</th>
+                <th>{useLang("Status")}</th>
                 <td />
               </tr>
             </thead>
@@ -191,7 +184,7 @@ const CommonDatabaseConnectionsTable: FC<
                             "border-light": !darkModeStatus,
                           })}
                           icon="Edit"
-                          onClick={handleUpcomingEdit}
+                          onClick={handleEdit}
                         />
                       </div>
                       <div className="col-auto">
@@ -215,7 +208,7 @@ const CommonDatabaseConnectionsTable: FC<
                             "border-light": !darkModeStatus,
                           })}
                           icon="Close"
-                          // onClick={handleUpcomingEdit}
+                          onClick={() => setDeleteModalOpen(true)}
                         />
                       </div>
                     </div>
@@ -236,134 +229,33 @@ const CommonDatabaseConnectionsTable: FC<
       </Card>
 
 
-
-      <OffCanvas
-        setOpen={setUpcomingEventsEditOffcanvas}
-        isOpen={upcomingEventsEditOffcanvas}
-        titleId="upcomingEdit"
-        isBodyScroll
-        placement="end"
+      <Modal
+        isOpen={deleteModalOpen}
+        setIsOpen={setDeleteModalOpen}
+        isCentered={true}
+        titleId="example-title"
       >
-        <OffCanvasHeader setOpen={setUpcomingEventsEditOffcanvas}>
-          <OffCanvasTitle id="upcomingEdit">Edit Appointments</OffCanvasTitle>
-        </OffCanvasHeader>
-        <OffCanvasBody>
-          <div className="row g-4">
-            <div className="col-12">
-              <FormGroup id="customerName" label="Customer">
-                <Input
-                  onChange={formik.handleChange}
-                  value={formik.values.customerName}
-                />
-              </FormGroup>
-            </div>
-            <div className="col-12">
-              <FormGroup id="service" label="Service">
-                <Input
-                  onChange={formik.handleChange}
-                  value={formik.values.service}
-                />
-              </FormGroup>
-            </div>
-            <div className="col-12">
-              <FormGroup id="employee" label="Employee">
-                <Input
-                  onChange={formik.handleChange}
-                  value={formik.values.employee}
-                />
-              </FormGroup>
-            </div>
-            <div className="col-12">
-              <FormGroup id="location" label="Location">
-                <Input
-                  onChange={formik.handleChange}
-                  value={formik.values.location}
-                />
-              </FormGroup>
-            </div>
-            <div className="col-6">
-              <FormGroup id="date" label="Date">
-                <Input
-                  onChange={formik.handleChange}
-                  value={formik.values.date}
-                  type="date"
-                />
-              </FormGroup>
-            </div>
-            <div className="col-6">
-              <FormGroup id="time" label="time">
-                <Input
-                  onChange={formik.handleChange}
-                  value={formik.values.time}
-                  type="time"
-                />
-              </FormGroup>
-            </div>
-            <div className="col-12">
-              <Card isCompact borderSize={2} shadow="none" className="mb-0">
-                <CardHeader>
-                  <CardLabel>
-                    <CardTitle>Extras</CardTitle>
-                  </CardLabel>
-                </CardHeader>
-                <CardBody>
-                  <FormGroup id="note" label="Note">
-                    <Textarea
-                      onChange={formik.handleChange}
-                      value={formik.values.note}
-                    />
-                  </FormGroup>
-                </CardBody>
-              </Card>
-            </div>
-            <div className="col-12">
-              <Card isCompact borderSize={2} shadow="none" className="mb-0">
-                <CardHeader>
-                  <CardLabel>
-                    <CardTitle>Notification</CardTitle>
-                  </CardLabel>
-                </CardHeader>
-                <CardBody>
-                  <FormGroup>
-                    <Checks
-                      id="notify"
-                      type="switch"
-                      label={
-                        <>
-                          Notify the Customer
-                          <Popovers
-                            trigger="hover"
-                            desc="Check this checkbox if you want your customer to receive an email about the scheduled appointment"
-                          >
-                            <Icon
-                              icon="Help"
-                              size="lg"
-                              className="ms-1 cursor-help"
-                            />
-                          </Popovers>
-                        </>
-                      }
-                      onChange={formik.handleChange}
-                      checked={formik.values.notify}
-                    />
-                  </FormGroup>
-                </CardBody>
-              </Card>
-            </div>
-          </div>
-        </OffCanvasBody>
-        <div className="row m-0">
-          <div className="col-12 p-3">
-            <Button
-              color="info"
-              className="w-100"
-              onClick={() => setUpcomingEventsEditOffcanvas(false)}
-            >
-              Save
-            </Button>
-          </div>
-        </div>
-      </OffCanvas>
+        <ModalHeader>
+          <ModalTitle id="example-title">{useLang("Title")}</ModalTitle>
+        </ModalHeader>
+        <ModalBody>{useLang("Remove Title")}</ModalBody>
+        <ModalFooter>
+          <Button
+            color="info"
+            isLink={true}
+            onClick={() => setDeleteModalOpen(false)}
+          >
+            {useLang("Close")}
+          </Button>
+          <Button
+            color="info"
+            icon="Delete"
+            onClick={() => setDeleteModalOpen(false)}
+          >
+            {useLang("Remove")}
+          </Button>
+        </ModalFooter>
+      </Modal>
     </>
   );
 };

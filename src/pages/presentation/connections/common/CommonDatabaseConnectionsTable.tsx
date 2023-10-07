@@ -40,10 +40,17 @@ import useDarkMode from "../../../../hooks/useDarkMode";
 import Select from "../../../../components/bootstrap/forms/Select";
 import HardSharpDonut from "../../../../assets/img/abstract/hald-sharp-donut.png";
 import CommonDatabaseProductItem from "./CommonDatabaseProductItem";
+import Modal, {
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+  ModalTitle,
+} from "../../../../components/bootstrap/Modal";
+import useLang from "../../../../hooks/useLang";
 
 interface ICommonDatabaseConnectionsTableProps {
   isFluid?: boolean;
-	handleUpcomingEdit: any
+  handleUpcomingEdit: any;
 }
 const CommonDatabaseConnectionsTable: FC<
   ICommonDatabaseConnectionsTableProps
@@ -52,9 +59,8 @@ const CommonDatabaseConnectionsTable: FC<
 
   // END :: Upcoming Events
 
-
-
   const [currentPage, setCurrentPage] = useState(1);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [perPage, setPerPage] = useState(PER_COUNT["5"]);
   const { items, requestSort, getClassNamesFor } = useSortableData(data);
 
@@ -64,7 +70,7 @@ const CommonDatabaseConnectionsTable: FC<
         <CardHeader borderSize={1}>
           <CardLabel icon="Link" iconColor="info">
             <CardTitle tag="div" className="h5">
-              Connections
+              {useLang("Connections")}
             </CardTitle>
           </CardLabel>
           <CardActions>
@@ -77,7 +83,7 @@ const CommonDatabaseConnectionsTable: FC<
               target="_blank"
               download
             >
-              Export
+              {useLang("Export")}
             </Button>
           </CardActions>
         </CardHeader>
@@ -86,20 +92,20 @@ const CommonDatabaseConnectionsTable: FC<
             <thead>
               <tr>
                 <th>#</th>
-                <th>Connections</th>
+                <th>{useLang("Connection")}</th>
                 <th
                   onClick={() => requestSort("date")}
                   className="cursor-pointer text-decoration-underline"
                 >
-                  Date / Time{" "}
+                 {`${useLang("Date")} / ${useLang("Time")}`}
                   <Icon
                     size="lg"
                     className={getClassNamesFor("date")}
                     icon="FilterList"
                   />
                 </th>
-                <th>Active Streams</th>
-                <th>Status</th>
+                <th>{useLang("Active Streams")}</th>
+                <th>{useLang("Status")}</th>
                 <td />
               </tr>
             </thead>
@@ -195,7 +201,7 @@ const CommonDatabaseConnectionsTable: FC<
                             "border-light": !darkModeStatus,
                           })}
                           icon="Close"
-                          // onClick={handleUpcomingEdit}
+                          onClick={() => setDeleteModalOpen(true)}
                         />
                       </div>
                     </div>
@@ -214,8 +220,33 @@ const CommonDatabaseConnectionsTable: FC<
           setPerPage={setPerPage}
         />
       </Card>
-
-
+      <Modal
+        isOpen={deleteModalOpen}
+        setIsOpen={setDeleteModalOpen}
+        isCentered={true}
+        titleId="example-title"
+      >
+        <ModalHeader>
+          <ModalTitle id="example-title">{useLang("Title")}</ModalTitle>
+        </ModalHeader>
+        <ModalBody>{useLang("Remove Title")}</ModalBody>
+        <ModalFooter>
+          <Button
+            color="info"
+            isLink={true}
+            onClick={() => setDeleteModalOpen(false)}
+          >
+            {useLang("Close")}
+          </Button>
+          <Button
+            color="info"
+            icon="Delete"
+            onClick={() => setDeleteModalOpen(false)}
+          >
+            {useLang("Remove")}
+          </Button>
+        </ModalFooter>
+      </Modal>
     </>
   );
 };

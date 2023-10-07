@@ -12,6 +12,7 @@ import topSalesData from "../../../common/data/dummySalesData";
 import { getFirstLetter, priceFormat } from "../../../helpers/helpers";
 import useDarkMode from "../../../hooks/useDarkMode";
 import { demoPagesMenu } from "../../../menu";
+import useLang from "../../../hooks/useLang";
 
 interface ITopSalesItemProps {
   name: string;
@@ -68,14 +69,9 @@ const CommonTopStreams = () => {
       <CardHeader>
         <CardLabel>
           <CardTitle tag="div" className="h5">
-            Top streams
+            {useLang("Top streams")}
           </CardTitle>
         </CardLabel>
-        <CardActions>
-          <Button color="info" isLink icon="Summarize" tag="a" to={`../`}>
-            Detailed Report
-          </Button>
-        </CardActions>
       </CardHeader>
       <CardBody  >
         <div className="row g-3">

@@ -16,6 +16,7 @@ import Company2 from '../../../../assets/logos/company2.png';
 import Company3 from '../../../../assets/logos/company3.png';
 import Company4 from '../../../../assets/logos/company4.png';
 import useDarkMode from '../../../../hooks/useDarkMode';
+import useLang from '../../../../hooks/useLang';
 
 const CommonDashboardSalesByStore = () => {
 	const { themeStatus } = useDarkMode();
@@ -376,10 +377,10 @@ const CommonDashboardSalesByStore = () => {
 			<CardHeader>
 				<CardLabel icon='ReceiptLong'>
 					<CardTitle tag='div' className='h5'>
-						Streams
+						{useLang("Streams")}
 					</CardTitle>
 					<CardSubTitle tag='div' className='h6'>
-						Reports
+						{useLang("Reports")}
 					</CardSubTitle>
 				</CardLabel>
 				<CardActions>

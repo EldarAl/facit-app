@@ -22,6 +22,7 @@ import showNotification from '../../../../components/extras/showNotification';
 import Icon from '../../../../components/icon/Icon';
 import { demoPagesMenu } from '../../../../menu';
 import useDarkMode from '../../../../hooks/useDarkMode';
+import useLang from '../../../../hooks/useLang';
 
 interface ICommonDatabaseProductItemProps {
 	id: string | number;
@@ -68,7 +69,7 @@ const CommonDatabaseProductItem: FC<ICommonDatabaseProductItemProps> = ({
 					onClick={onClick}
 					// to={`../${demoPagesMenu.sales.subMenu.productID.path}/${id}`}
           >
-					Add 
+					{useLang("Add")} 
 				</Button>
 			</CardFooter>
 		</Card>

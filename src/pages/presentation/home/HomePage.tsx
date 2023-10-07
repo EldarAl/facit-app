@@ -12,10 +12,11 @@ import Popovers from "../../../components/bootstrap/Popovers";
 import CommonDashboardTopSeller from "./common/CommonDashboardTopSeller";
 import CommonDashboardSalesByStore from "./common/CommonDashboardSalesByStore";
 import Chart from "../../../components/extras/Chart";
+import useLang from "../../../hooks/useLang";
 
-const DashboardPage = () => {
+const HomePage = () => {
   return (
-    <PageWrapper title="Dashboard Page">
+    <PageWrapper title={useLang("Home Page")}>
       <Page container="fluid">
         <div className="row">
           <div className="col-xl-4">
@@ -25,10 +26,10 @@ const DashboardPage = () => {
             <CommonDashboardSalesByStore />
           </div>
           <div className="col-xxl-6">
-            <CommonDashboardTopSeller title="Connections"/>
+            <CommonDashboardTopSeller title={useLang("Connections")}/>
           </div>
           <div className="col-xxl-6">
-            <CommonDashboardTopSeller title="Data Bases" />
+            <CommonDashboardTopSeller title={useLang("Data Bases")} />
           </div>
         </div>
       </Page>
@@ -36,4 +37,4 @@ const DashboardPage = () => {
   );
 };
 
-export default DashboardPage;
+export default HomePage;

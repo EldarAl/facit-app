@@ -1,7 +1,6 @@
 import React, { FC, memo, ReactNode, useCallback, useContext, useRef, useState } from 'react';
 import { useWindowSize } from 'react-use';
 import { NavLink, useLocation } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 import { NavHashLink } from 'react-router-hash-link';
 import { Manager, Popper, Reference } from 'react-popper';
@@ -15,6 +14,7 @@ import ThemeContext from '../../contexts/themeContext';
 import useDarkMode from '../../hooks/useDarkMode';
 import { TIcons } from '../../type/icons-type';
 import List from './List';
+import useLang from '../../hooks/useLang';
 
 interface IItemProps {
 	children?: ReactNode;
@@ -74,7 +74,6 @@ const Item: FC<IItemProps> = ({
 	// For top menu
 	const match = to !== '/' && location.pathname === to;
 
-	const { t } = useTranslation('menu');
 
 	const LINK_CLASS = classNames('navigation-link', 'navigation-link-pill', {
 		collapsed: !!children && !isHorizontal,
@@ -85,7 +84,7 @@ const Item: FC<IItemProps> = ({
 		<>
 			<span className='navigation-link-info'>
 				{icon && <Icon className='navigation-icon' icon={icon} />}
-				{title && <span className='navigation-text'>{t(title) as ReactNode}</span>}
+				{title && <span className='navigation-text'>{useLang(title) as ReactNode}</span>}
 			</span>
 			{(!!children || !!notification) && (
 				<span className='navigation-link-extra'>

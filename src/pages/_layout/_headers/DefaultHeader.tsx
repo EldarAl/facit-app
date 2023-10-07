@@ -1,5 +1,4 @@
 import React, { useLayoutEffect, useContext } from "react";
-import { useTranslation } from "react-i18next";
 import ThemeContext from "../../../contexts/themeContext";
 import Header, { HeaderLeft, HeaderRight } from "../../../layout/Header/Header";
 import Popovers from "../../../components/bootstrap/Popovers";
@@ -21,6 +20,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../../components/Logo";
 import PlanLogo from "../../../assets/img/abstract/beveled-cube.png";
 import { pages } from "../../../menu";
+import useLang from "../../../hooks/useLang";
 
 const DefaultHeader = () => {
   const { darkModeStatus, setDarkModeStatus } = useDarkMode();
@@ -33,26 +33,26 @@ const DefaultHeader = () => {
     size: "lg",
   };
 
-  const { i18n } = useTranslation();
+  // const { i18n } = useTranslation();
 
-  const changeLanguage = (lng: ILang["key"]["lng"]) => {
-    i18n.changeLanguage(lng).then(() =>
-      showNotification(
-        <span className="d-flex align-items-center">
-          <Icon icon={getLangWithKey(lng)?.icon} size="lg" className="me-1" />
-          <span>{`Language changed to ${getLangWithKey(lng)?.text}`}</span>
-        </span>,
-        'You updated the language of the site. (Only "Aside" was prepared as an example.)'
-      )
-    );
-  };
+  // const changeLanguage = (lng: ILang["key"]["lng"]) => {
+  //   i18n.changeLanguage(lng).then(() =>
+  //     showNotification(
+  //       <span className="d-flex align-items-center">
+  //         <Icon icon={getLangWithKey(lng)?.icon} size="lg" className="me-1" />
+  //         <span>{`Language changed to ${getLangWithKey(lng)?.text}`}</span>
+  //       </span>,
+  //       'You updated the language of the site. (Only "Aside" was prepared as an example.)'
+  //     )
+  //   );
+  // };
 
   /**
    * Language attribute
    */
-  useLayoutEffect(() => {
-    document.documentElement.setAttribute("lang", i18n.language);
-  });
+  // useLayoutEffect(() => {
+  //   document.documentElement.setAttribute("lang", i18n.language);
+  // });
 
   return (
     <Header>
@@ -70,7 +70,7 @@ const DefaultHeader = () => {
         <div className="row g-3 align-items-center">
           {/* Plan*/}
           <div className="col-auto">
-            <Popovers trigger="hover" desc="Plan">
+            <Popovers trigger="hover" desc={useLang("Plan")}>
               <Button
                 // eslint-disable-next-line react/jsx-props-no-spreading
                 {...styledBtn}
@@ -80,13 +80,13 @@ const DefaultHeader = () => {
                 aria-label="Toggle dark mode"
               >
                 <img src={PlanLogo} height={"24"} />
-                <span>Pro Plus</span>
+                <span>{useLang("Pro")}</span>
               </Button>
             </Popovers>
           </div>
           {/* Dark Mode */}
           <div className="col-auto">
-            <Popovers trigger="hover" desc="Dark / Light mode">
+            <Popovers trigger="hover" desc={useLang("Theme mode")}>
               <Button
                 // eslint-disable-next-line react/jsx-props-no-spreading
                 {...styledBtn}
@@ -105,7 +105,7 @@ const DefaultHeader = () => {
           </div>
           {/*	Full Screen */}
           <div className="col-auto">
-            <Popovers trigger="hover" desc="Fullscreen">
+            <Popovers trigger="hover" desc={useLang("Fullscreen")}>
               <Button
                 // eslint-disable-next-line react/jsx-props-no-spreading
                 {...styledBtn}
@@ -116,7 +116,7 @@ const DefaultHeader = () => {
             </Popovers>
           </div>
           {/* Lang Selector */}
-          <div className="col-auto">
+          {/* <div className="col-auto">
             <Dropdown>
               <DropdownToggle hasIcon={false}>
                 {typeof getLangWithKey(i18n.language as ILang["key"]["lng"])
@@ -155,7 +155,7 @@ const DefaultHeader = () => {
                 ))}
               </DropdownMenu>
             </Dropdown>
-          </div>
+          </div> */}
           {/* User */}
           <div
             className="col d-flex align-items-center cursor-pointer"
@@ -175,7 +175,7 @@ const DefaultHeader = () => {
             </div>
             {/* User Avatar */}
 
-            <div className="position-relative">
+            <div className="position-relative ">
               <Avatar
                 srcSet={USERS.CHLOE.srcSet}
                 src={USERS.CHLOE.src}

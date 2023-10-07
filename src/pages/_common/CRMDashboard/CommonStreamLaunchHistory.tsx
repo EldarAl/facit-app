@@ -12,6 +12,7 @@ import Button from "../../../components/bootstrap/Button";
 import { priceFormat } from "../../../helpers/helpers";
 import useDarkMode from "../../../hooks/useDarkMode";
 import { demoPagesMenu } from "../../../menu";
+import useLang from "../../../hooks/useLang";
 
 type TStatus = "Paid" | "Pending" | "Failed";
 interface ITransactionsItemProps {
@@ -136,7 +137,7 @@ const CommonStreamLaunchHistory = () => {
       <CardHeader>
         <CardLabel>
           <CardTitle tag="div" className="h5">
-            Stream launch history
+            {useLang("Stream history")}
           </CardTitle>
         </CardLabel>
 

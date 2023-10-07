@@ -1,10 +1,10 @@
 import React, { FC, forwardRef, HTMLAttributes, ReactNode, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { useTranslation } from 'react-i18next';
 import { TIcons } from '../../type/icons-type';
 import Item from './Item';
 import List from './List';
+import useLang from '../../hooks/useLang';
 
 interface INavigationLineProps {
 	className?: string;
@@ -68,7 +68,7 @@ const Navigation = forwardRef<HTMLElement, INavigationProps>(
 	({ menu, horizontal, id, className, ...props }, ref) => {
 		const [activeItem, setActiveItem] = useState(undefined);
 
-		const { t } = useTranslation('menu');
+		
 
 		function fillMenu(
 			data:
@@ -100,7 +100,7 @@ const Navigation = forwardRef<HTMLElement, INavigationProps>(
 						key={data[item].id}
 						rootId={rootId}
 						id={data[item].id}
-						title={data[item].text}
+						title={useLang(data[item].text)}
 						icon={data[item].icon}
 						to={`${data[item].path}`}
 						parentId={parentId}
@@ -122,7 +122,7 @@ const Navigation = forwardRef<HTMLElement, INavigationProps>(
 					!isMore &&
 					!isHorizontal && (
 						<NavigationTitle key={data[item].id}>
-							{t(data[item].text) as ReactNode}
+							{useLang(data[item].text)}
 						</NavigationTitle>
 					)
 				),
@@ -138,7 +138,7 @@ const Navigation = forwardRef<HTMLElement, INavigationProps>(
 					{horizontal && (
 						<Item
 							rootId={`other-${id}`}
-							title={t('More') as string}
+							title={'More'}
 							icon='MoreHoriz'
 							isHorizontal
 							isMore>

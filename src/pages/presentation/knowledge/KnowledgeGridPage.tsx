@@ -15,6 +15,7 @@ import { demoPagesMenu, pageLayoutTypesPagesMenu } from '../../../menu';
 import useDarkMode from '../../../hooks/useDarkMode';
 import useTourStep from '../../../hooks/useTourStep';
 import { TColor } from '../../../type/color-type';
+import useLang from '../../../hooks/useLang';
 
 interface IItemProps {
 	id: string | number;
@@ -137,83 +138,8 @@ const KnowledgeGridPage = () => {
 			<Page>
 				<div className='row'>
 					<div className='col-12 text-center my-5'>
-						<span className='display-5 fw-bold'>Hello, May I help you?</span>
+						<span className='display-5 fw-bold'>{useLang("Help subtitle")}</span>
 					</div>
-					{/* <div
-						className='col-xxl-6 mx-auto text-center my-5'
-						data-tour='knowledge-filter'>
-						<form
-							className={classNames('row', 'pb-4 px-3 mx-0 g-4', 'rounded-3', [
-								`bg-l${darkModeStatus ? 'o25' : '10'}-primary`,
-							])}
-							onSubmit={formik.handleSubmit}>
-							<div className='col-md-5'>
-								<Select
-									id='category'
-									size='lg'
-									ariaLabel='Category'
-									placeholder='All Category'
-									list={Object.keys(CATEGORIES).map((c) => CATEGORIES[c])}
-									className={classNames('rounded-1', {
-										'bg-white': !darkModeStatus,
-									})}
-									onChange={(e: { target: { value: any } }) => {
-										formik.handleChange(e);
-
-										if (e.target.value)
-											debounce(
-												() =>
-													onFormSubmit({
-														...formik.values,
-														category: e.target.value,
-													}),
-												1000,
-											)();
-									}}
-									value={formik.values.category}
-								/>
-							</div>
-							<div className='col-md-5'>
-								<Input
-									id='search'
-									size='lg'
-									placeholder='Type your question...'
-									className={classNames('rounded-1', {
-										'bg-white': !darkModeStatus,
-									})}
-									onChange={(e: { target: { value: string | any[] } }) => {
-										formik.handleChange(e);
-
-										if (e.target.value.length > 2)
-											debounce(
-												() =>
-													onFormSubmit({
-														...formik.values,
-														search: e.target.value,
-													}),
-												1000,
-											)();
-
-										if (e.target.value.length === 0) formik.resetForm();
-									}}
-									value={formik.values.search}
-								/>
-							</div>
-							<div className='col-md-2'>
-								<Button
-									size='lg'
-									icon='Close'
-									color='primary'
-									className='w-100'
-									rounded={1}
-									onClick={formik.resetForm}
-									type='reset'
-									isDisable={!(formik.values.search || formik.values.category)}
-									aria-label='Clear'
-								/>
-							</div>
-						</form>
-					</div> */}
 				</div>
 				<div className='row mb-5'>
 					{filterableData.map((item) => (

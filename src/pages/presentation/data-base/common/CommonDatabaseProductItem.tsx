@@ -22,16 +22,19 @@ import showNotification from '../../../../components/extras/showNotification';
 import Icon from '../../../../components/icon/Icon';
 import { demoPagesMenu } from '../../../../menu';
 import useDarkMode from '../../../../hooks/useDarkMode';
+import useLang from '../../../../hooks/useLang';
 
 interface ICommonDatabaseProductItemProps {
 	id: string | number;
 	name: string;
 	img: string;
+	onClick: any;
 }
 const CommonDatabaseProductItem: FC<ICommonDatabaseProductItemProps> = ({
 	id,
 	name,
 	img,
+	onClick
 }) => {
 	const { themeStatus, darkModeStatus } = useDarkMode();
 
@@ -62,9 +65,10 @@ const CommonDatabaseProductItem: FC<ICommonDatabaseProductItemProps> = ({
 					}`}
 					size='lg'
 					tag='a'
+					onClick={onClick}
 					// to={`../${demoPagesMenu.sales.subMenu.productID.path}/${id}`}
           >
-					Add 
+					{useLang("Add")} 
 				</Button>
 			</CardFooter>
 		</Card>
