@@ -12,7 +12,7 @@ import './i18n';
 const children = (
 	<AuthContextProvider>
 		<ThemeContextProvider>
-			<Router>
+			<Router basename="/my">
 				<React.StrictMode>
 					<App />
 				</React.StrictMode>
