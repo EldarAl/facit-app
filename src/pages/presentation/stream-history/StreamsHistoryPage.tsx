@@ -107,7 +107,7 @@ const StreamsHistoryPage = () => {
               list={data.map((c) => {
                 return { value: c.id, text: c.name };
               })}
-              className={classNames("rounded-1", {
+              className={classNames("rounded-1 fs-6", {
                 "bg-white": !darkModeStatus,
               })}
             />
@@ -121,7 +121,7 @@ const StreamsHistoryPage = () => {
               list={data.map((c) => {
                 return { value: c.id, text: c.name };
               })}
-              className={classNames("rounded-1", {
+              className={classNames("rounded-1 fs-6", {
                 "bg-white": !darkModeStatus,
               })}
             />
@@ -130,13 +130,15 @@ const StreamsHistoryPage = () => {
             <Select
               id="databaseName"
               size="lg"
+              
               ariaLabel="Database name"
               placeholder={useLang("Database name")}
               list={data.map((c) => {
                 return { value: c.id, text: c.name };
               })}
-              className={classNames("rounded-1", {
+              className={classNames("rounded-1 fs-6", {
                 "bg-white": !darkModeStatus,
+
               })}
             />
           </div>

@@ -5,7 +5,7 @@ import BeveledCone from "../../../assets/img/abstract/beveled-cone.png";
 import CloudBall from "../../../assets/img/abstract/cloud-ball.png";
 import Quadrilateral from "../../../assets/img/abstract/quadrilateral.png";
 import HardSharpDonut from "../../../assets/img/abstract/hald-sharp-donut.png";
-import CommonDatabaseConnectionsTable from "./common/CommonDatabaseConnectionsTable";
+import CommonConnectionsTable from "./common/CommonConnectionsTable";
 import OffCanvas, {
   OffCanvasBody,
   OffCanvasHeader,
@@ -101,7 +101,8 @@ const CoonectionsePage = () => {
             ))}
           </div>
 
-          <CommonDatabaseConnectionsTable
+          <CommonConnectionsTable
+            withActions
             handleUpcomingEdit={() => {
               setIsEdit(true);
               setUpcomingEventsEditOffcanvas(true);
@@ -152,7 +153,7 @@ const CoonectionsePage = () => {
                       list={data.map((c) => {
                         return { value: c.id, text: c.name };
                       })}
-                      className={classNames("rounded-1", {
+                      className={classNames("rounded-1 fs-6", {
                         "bg-white": !darkModeStatus,
                       })}
                       // onChange={(e: { target: { value: any } }) => {
@@ -178,7 +179,8 @@ const CoonectionsePage = () => {
                     label={useLang("Connection name")}
                   >
                     <Input
-                      size={"lg"}
+                      // size={"sm"}
+                      // className="fs-6"
                       onChange={formik.handleChange}
                       value={formik.values.connectionName}
                     />

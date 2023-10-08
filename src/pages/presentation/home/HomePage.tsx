@@ -13,6 +13,8 @@ import CommonDashboardTopSeller from "./common/CommonDashboardTopSeller";
 import CommonDashboardSalesByStore from "./common/CommonDashboardSalesByStore";
 import Chart from "../../../components/extras/Chart";
 import useLang from "../../../hooks/useLang";
+import CommonConnectionsTable from "../connections/common/CommonConnectionsTable";
+import CommonDatabaseTable from "../data-base/common/CommonDatabaseTable";
 
 const HomePage = () => {
   return (
@@ -26,10 +28,12 @@ const HomePage = () => {
             <CommonDashboardSalesByStore />
           </div>
           <div className="col-xxl-6">
-            <CommonDashboardTopSeller title={useLang("Connections")}/>
+            {/* <CommonDashboardTopSeller title={useLang("Connections")}/> */}
+            <CommonConnectionsTable  />
           </div>
           <div className="col-xxl-6">
-            <CommonDashboardTopSeller title={useLang("Data Bases")} />
+            {/* <CommonDashboardTopSeller title={useLang("Data Bases")} /> */}
+            <CommonDatabaseTable />
           </div>
         </div>
       </Page>

@@ -37,6 +37,9 @@ import PaginationButtons, {
 } from "../../../../components/PaginationButtons";
 import useSortableData from "../../../../hooks/useSortableData";
 import useDarkMode from "../../../../hooks/useDarkMode";
+import Select from "../../../../components/bootstrap/forms/Select";
+import HardSharpDonut from "../../../../assets/img/abstract/hald-sharp-donut.png";
+import CommonDatabaseProductItem from "./CommonDatabaseProductItem";
 import Modal, {
   ModalBody,
   ModalFooter,
@@ -45,29 +48,22 @@ import Modal, {
 } from "../../../../components/bootstrap/Modal";
 import useLang from "../../../../hooks/useLang";
 
-interface ICommonDatabaseConnectionsTableProps {
+interface ICommonConnectionsTableProps {
   isFluid?: boolean;
-	handleEdit: any;
+  handleUpcomingEdit?: any;
+  withActions?: boolean;
 }
-const CommonDatabaseConnectionsTable: FC<
-  ICommonDatabaseConnectionsTableProps
-> = ({ isFluid, handleEdit }) => {
+const CommonConnectionsTable: FC<ICommonConnectionsTableProps> = ({
+  isFluid,
+  handleUpcomingEdit,
+  withActions = false,
+}) => {
   const { themeStatus, darkModeStatus } = useDarkMode();
 
-  // BEGIN :: Upcoming Events
-
-  const [upcomingEventsEditOffcanvas, setUpcomingEventsEditOffcanvas] =
-    useState(false);
-  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
-
-  const handleUpcomingEdit = () => {
-    setUpcomingEventsEditOffcanvas(!upcomingEventsEditOffcanvas);
-  };
   // END :: Upcoming Events
 
-
-
   const [currentPage, setCurrentPage] = useState(1);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [perPage, setPerPage] = useState(PER_COUNT["5"]);
   const { items, requestSort, getClassNamesFor } = useSortableData(data);
 
@@ -75,9 +71,9 @@ const CommonDatabaseConnectionsTable: FC<
     <>
       <Card stretch={isFluid}>
         <CardHeader borderSize={1}>
-          <CardLabel icon="Storage" iconColor="info">
+          <CardLabel icon="Link" iconColor="info">
             <CardTitle tag="div" className="h5">
-              {useLang("Data Bases")}
+              {useLang("Connections")}
             </CardTitle>
           </CardLabel>
           <CardActions>
@@ -99,7 +95,7 @@ const CommonDatabaseConnectionsTable: FC<
             <thead>
               <tr>
                 <th>#</th>
-                <th>{useLang("Database")}</th>
+                <th>{useLang("Connection")}</th>
                 <th
                   onClick={() => requestSort("date")}
                   className="cursor-pointer text-decoration-underline"
@@ -113,7 +109,7 @@ const CommonDatabaseConnectionsTable: FC<
                 </th>
                 <th>{useLang("Active Streams")}</th>
                 <th>{useLang("Status")}</th>
-                <td />
+                {withActions && <td />}
               </tr>
             </thead>
             <tbody>
@@ -173,46 +169,48 @@ const CommonDatabaseConnectionsTable: FC<
                       </DropdownMenu>
                     </Dropdown>
                   </td>
-                  <td>
-                    <div className="row g-3">
-                      <div className="col-auto">
-                        <Button
-                          isOutline={!darkModeStatus}
-                          color="dark"
-                          isLight={darkModeStatus}
-                          className={classNames("text-nowrap", {
-                            "border-light": !darkModeStatus,
-                          })}
-                          icon="Edit"
-                          onClick={handleEdit}
-                        />
+                  {withActions && (
+                    <td>
+                      <div className="row g-3">
+                        <div className="col-auto">
+                          <Button
+                            isOutline={!darkModeStatus}
+                            color="dark"
+                            isLight={darkModeStatus}
+                            className={classNames("text-nowrap", {
+                              "border-light": !darkModeStatus,
+                            })}
+                            icon="Edit"
+                            onClick={handleUpcomingEdit}
+                          />
+                        </div>
+                        <div className="col-auto">
+                          <Button
+                            isOutline={!darkModeStatus}
+                            color="dark"
+                            isLight={darkModeStatus}
+                            className={classNames("text-nowrap", {
+                              "border-light": !darkModeStatus,
+                            })}
+                            icon="Refresh"
+                            // onClick={handleUpcomingEdit}
+                          />
+                        </div>
+                        <div className="col-auto">
+                          <Button
+                            isOutline={!darkModeStatus}
+                            color="dark"
+                            isLight={darkModeStatus}
+                            className={classNames("text-nowrap", {
+                              "border-light": !darkModeStatus,
+                            })}
+                            icon="Close"
+                            onClick={() => setDeleteModalOpen(true)}
+                          />
+                        </div>
                       </div>
-                      <div className="col-auto">
-                        <Button
-                          isOutline={!darkModeStatus}
-                          color="dark"
-                          isLight={darkModeStatus}
-                          className={classNames("text-nowrap", {
-                            "border-light": !darkModeStatus,
-                          })}
-                          icon="Refresh"
-                          // onClick={handleUpcomingEdit}
-                        />
-                      </div>
-                      <div className="col-auto">
-                        <Button
-                          isOutline={!darkModeStatus}
-                          color="dark"
-                          isLight={darkModeStatus}
-                          className={classNames("text-nowrap", {
-                            "border-light": !darkModeStatus,
-                          })}
-                          icon="Close"
-                          onClick={() => setDeleteModalOpen(true)}
-                        />
-                      </div>
-                    </div>
-                  </td>
+                    </td>
+                  )}
                 </tr>
               ))}
             </tbody>
@@ -227,8 +225,6 @@ const CommonDatabaseConnectionsTable: FC<
           setPerPage={setPerPage}
         />
       </Card>
-
-
       <Modal
         isOpen={deleteModalOpen}
         setIsOpen={setDeleteModalOpen}
@@ -259,8 +255,8 @@ const CommonDatabaseConnectionsTable: FC<
     </>
   );
 };
-CommonDatabaseConnectionsTable.defaultProps = {
+CommonConnectionsTable.defaultProps = {
   isFluid: false,
 };
 
-export default CommonDatabaseConnectionsTable;
+export default CommonConnectionsTable;

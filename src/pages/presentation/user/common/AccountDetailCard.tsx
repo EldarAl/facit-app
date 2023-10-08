@@ -72,11 +72,7 @@ const AccountDetailCard = () => {
                     {useLang("Delete Avatar")}
                   </Button>
                 </div>
-                <div className="col-12">
-                  <p className="lead text-muted">
-                    {useLang("Avatar Info")}
-                  </p>
-                </div>
+
               </div>
             </div>
           </div>

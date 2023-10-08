@@ -48,11 +48,6 @@ export const authPages = {
 
 };
 export const demoPagesMenu = {
-	commonPages: {
-		id: 'commonPages',
-		text: 'Common Pages',
-		icon: 'Extension',
-	},
 	connections: {
 		id: 'connections',
 		text: 'Connections',
@@ -81,10 +76,7 @@ export const demoPagesMenu = {
 };
 
 export const pageLayoutTypesPagesMenu = {
-	layoutTypes: {
-		id: 'layoutTypes',
-		text: 'Support Pages',
-	},
+
 	help: {
 		id: 'Help',
 		text: 'Help',

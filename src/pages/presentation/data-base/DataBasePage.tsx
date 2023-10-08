@@ -5,7 +5,7 @@ import BeveledCone from "../../../assets/img/abstract/beveled-cone.png";
 import CloudBall from "../../../assets/img/abstract/cloud-ball.png";
 import Quadrilateral from "../../../assets/img/abstract/quadrilateral.png";
 import HardSharpDonut from "../../../assets/img/abstract/hald-sharp-donut.png";
-import CommonDatabaseConnectionsTable from "./common/CommonDatabaseConnectionsTable";
+import CommonDatabaseTable from "./common/CommonDatabaseTable";
 import useLang from "../../../hooks/useLang";
 import OffCanvas, {
   OffCanvasBody,
@@ -64,12 +64,12 @@ const DataBasePage = () => {
       return undefined;
     },
     initialValues: {
-      customerName: "Alison Berry",
-      service: "Exercise Bike",
-      location: "Maryland",
-      time: "10:30",
-      note: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut nisi odio. Nam sit amet pharetra enim. Nulla facilisi. Nunc dictum felis id massa mattis pretium. Mauris at blandit orci. Nunc vulputate vulputate turpis vitae cursus. In sit amet turpis tincidunt, interdum ex vitae, sollicitudin massa. Maecenas eget dui molestie, ullamcorper ante vel, tincidunt nisi. Donec vitae pulvinar risus. In ultricies nisl ac massa malesuada, vel tempus neque placerat.",
-      notify: true,
+      host: "",
+      port: "",
+      database: "",
+      user: "",
+      password: "",
+      ssl: true,
     },
   });
 
@@ -103,10 +103,13 @@ const DataBasePage = () => {
             ))}
           </div>
 
-          <CommonDatabaseConnectionsTable handleEdit={() => {
+          <CommonDatabaseTable
+            withActions
+            handleEdit={() => {
               setIsEdit(true);
               setDatabaseFormCanvas(true);
-            }} />
+            }}
+          />
 
           <OffCanvas
             setOpen={setDatabaseFormCanvas}
@@ -140,65 +143,66 @@ const DataBasePage = () => {
                       <div className="col-8">
                         <FormGroup id="host" label={useLang("Host")}>
                           <Input
-                            size={"lg"}
                             onChange={formik.handleChange}
-                            // value={formik.values.connectionName}
+                            value={formik.values.host}
                           />
                         </FormGroup>
                       </div>
                       <div className="col-4">
                         <FormGroup id="port" label={useLang("Port")}>
                           <Input
-                            size={"lg"}
                             onChange={formik.handleChange}
-                            // value={formik.values.connectionName}
+                            value={formik.values.port}
                           />
                         </FormGroup>
                       </div>
                       <div className="col-12">
-                        <FormGroup id="databse" label={useLang("Database")}>
+                        <FormGroup id="database" label={useLang("Database")}>
                           <Input
-                            size={"lg"}
                             onChange={formik.handleChange}
-                            // value={formik.values.connectionName}
+                            value={formik.values.database}
                           />
                         </FormGroup>
                       </div>
                       <div className="col-12">
                         <FormGroup id="user" label={useLang("User")}>
                           <Input
-                            size={"lg"}
                             onChange={formik.handleChange}
-                            // value={formik.values.connectionName}
+                            value={formik.values.user}
                           />
                         </FormGroup>
                       </div>
                       <div className="col-12">
                         <FormGroup id="password" label={useLang("Password")}>
                           <Input
-                            size={"lg"}
                             onChange={formik.handleChange}
-                            // value={formik.values.connectionName}
+                            value={formik.values.password}
                           />
                         </FormGroup>
                       </div>
                       <div className="col-12">
-                          <Checks type="checkbox" checked  label={useLang("Use SSL")} onChange={()=>{}}/>
+                        <Checks
+                          type="checkbox"
+                          id="ssl"
+                          name={"ssl"}
+                          label={useLang("Use SSL")}
+                          onChange={formik.handleChange}
+                          checked={formik.values.ssl}
+                        />
                       </div>
                     </div>
                   </CardBody>
                   <CardFooter className="justify-center">
-                    <Button className="m-auto" color="info" >{useLang("Download certifiate")}</Button>
+                    <Button className="m-auto" color="info">
+                      {useLang("Download certifiate")}
+                    </Button>
                   </CardFooter>
                 </Card>
               </div>
             </OffCanvasBody>
             <div className="row m-0">
-            <div className="col-6 py-3">
-                <Button
-                  color="light"
-                  className="w-100"
-                >
+              <div className="col-6 py-3">
+                <Button color="light" className="w-100">
                   {useLang("Do test")}
                 </Button>
               </div>
