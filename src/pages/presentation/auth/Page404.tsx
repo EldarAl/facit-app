@@ -1,12 +1,10 @@
-import React from 'react';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import Page from '../../../layout/Page/Page';
+import { useNavigate } from 'react-router-dom';
 import Humans from '../../../assets/img/scene4.png';
 import HumansWebp from '../../../assets/img/scene4.webp';
 import Button from '../../../components/bootstrap/Button';
-import { demoPagesMenu } from '../../../menu';
-import { useNavigate } from 'react-router-dom';
 import useLang from '../../../hooks/useLang';
+import Page from '../../../layout/Page/Page';
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
 
 const Page404 = () => {
 	const navigate = useNavigate()

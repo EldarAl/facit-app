@@ -1,20 +1,10 @@
-import React from "react";
 import CommonDashboardUserCard from "./common/CommonDashboardUserCard";
-
-import PageWrapper from "../../../layout/PageWrapper/PageWrapper";
-import SubHeader, {
-  SubHeaderLeft,
-  SubHeaderRight,
-  SubheaderSeparator,
-} from "../../../layout/SubHeader/SubHeader";
-import Page from "../../../layout/Page/Page";
-import Popovers from "../../../components/bootstrap/Popovers";
-import CommonDashboardTopSeller from "./common/CommonDashboardTopSeller";
-import CommonDashboardSalesByStore from "./common/CommonDashboardSalesByStore";
-import Chart from "../../../components/extras/Chart";
 import useLang from "../../../hooks/useLang";
+import Page from "../../../layout/Page/Page";
+import PageWrapper from "../../../layout/PageWrapper/PageWrapper";
 import CommonConnectionsTable from "../connections/common/CommonConnectionsTable";
 import CommonDatabaseTable from "../data-base/common/CommonDatabaseTable";
+import CommonDashboardSalesByStore from "./common/CommonDashboardSalesByStore";
 
 const HomePage = () => {
   return (

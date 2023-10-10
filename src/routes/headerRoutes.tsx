@@ -1,10 +1,7 @@
-import React from "react";
 import { RouteProps } from "react-router-dom";
 import {
-	authPages,
-  dashboardPagesMenu,
-  demoPagesMenu,
-  pageLayoutTypesPagesMenu,
+  authPages,
+  dashboardPagesMenu
 } from "../menu";
 import DefaultHeader from "../pages/_layout/_headers/DefaultHeader";
 

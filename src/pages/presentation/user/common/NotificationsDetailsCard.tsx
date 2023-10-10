@@ -1,3 +1,5 @@
+import { useFormik } from "formik";
+import Button from "../../../../components/bootstrap/Button";
 import Card, {
   CardBody,
   CardFooter,
@@ -7,18 +9,12 @@ import Card, {
   CardLabel,
   CardTitle,
 } from "../../../../components/bootstrap/Card";
-import useLang from "../../../../hooks/useLang";
-import Button from "../../../../components/bootstrap/Button";
-import FormGroup from "../../../../components/bootstrap/forms/FormGroup";
-import Input from "../../../../components/bootstrap/forms/Input";
-import { useFormik } from "formik";
-import showNotification from "../../../../components/extras/showNotification";
-import Icon from "../../../../components/icon/Icon";
-import validateAddress from "../helper/editPageAddressValidate";
-import Label from "../../../../components/bootstrap/forms/Label";
 import Checks, {
   ChecksGroup,
 } from "../../../../components/bootstrap/forms/Checks";
+import FormGroup from "../../../../components/bootstrap/forms/FormGroup";
+import Label from "../../../../components/bootstrap/forms/Label";
+import useLang from "../../../../hooks/useLang";
 
 const NotificationsDetailsCard = () => {
 

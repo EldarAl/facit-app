@@ -1,21 +1,19 @@
-import React from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
 import classNames from 'classnames';
-import data from './helper/dummyKnowledgeData';
+import { useNavigate, useParams } from 'react-router-dom';
+import USERS from '../../../common/data/userDummyData';
+import Avatar from '../../../components/Avatar';
+import Button from '../../../components/bootstrap/Button';
+import useDarkMode from '../../../hooks/useDarkMode';
+import useLang from '../../../hooks/useLang';
+import useTourStep from '../../../hooks/useTourStep';
+import Page from '../../../layout/Page/Page';
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
 import SubHeader, {
 	SubHeaderLeft,
 	SubHeaderRight,
 	SubheaderSeparator,
 } from '../../../layout/SubHeader/SubHeader';
-import Button from '../../../components/bootstrap/Button';
-import Avatar from '../../../components/Avatar';
-import Page from '../../../layout/Page/Page';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import Badge from '../../../components/bootstrap/Badge';
-import USERS from '../../../common/data/userDummyData';
-import useDarkMode from '../../../hooks/useDarkMode';
-import useTourStep from '../../../hooks/useTourStep';
-import useLang from '../../../hooks/useLang';
+import data from './helper/dummyKnowledgeData';
 
 const KnowledgeViewPage = () => {
 	useTourStep(16);

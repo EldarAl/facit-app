@@ -1,26 +1,17 @@
-import React, { useLayoutEffect, useContext } from "react";
-import ThemeContext from "../../../contexts/themeContext";
-import Header, { HeaderLeft, HeaderRight } from "../../../layout/Header/Header";
-import Popovers from "../../../components/bootstrap/Popovers";
-import Button, { IButtonProps } from "../../../components/bootstrap/Button";
-import useDarkMode from "../../../hooks/useDarkMode";
-import LANG, { getLangWithKey, ILang } from "../../../lang";
-import Dropdown, {
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-} from "../../../components/bootstrap/Dropdown";
-import showNotification from "../../../components/extras/showNotification";
-import Icon from "../../../components/icon/Icon";
-import Spinner from "../../../components/bootstrap/Spinner";
-import { ChatAvatar } from "../../../components/Chat";
-import Avatar from "../../../components/Avatar";
-import USERS from "../../../common/data/userDummyData";
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Logo from "../../../components/Logo";
 import PlanLogo from "../../../assets/img/abstract/beveled-cube.png";
-import { pages } from "../../../menu";
+import USERS from "../../../common/data/userDummyData";
+import Avatar from "../../../components/Avatar";
+import Logo from "../../../components/Logo";
+import Button, { IButtonProps } from "../../../components/bootstrap/Button";
+import Popovers from "../../../components/bootstrap/Popovers";
+import Icon from "../../../components/icon/Icon";
+import ThemeContext from "../../../contexts/themeContext";
+import useDarkMode from "../../../hooks/useDarkMode";
 import useLang from "../../../hooks/useLang";
+import Header, { HeaderLeft, HeaderRight } from "../../../layout/Header/Header";
+import { pages } from "../../../menu";
 
 const DefaultHeader = () => {
   const { darkModeStatus, setDarkModeStatus } = useDarkMode();
@@ -167,9 +158,6 @@ const DefaultHeader = () => {
               <div className="text-end">
                 <div className="fw-bold fs-6 mb-0">
                   {`${USERS.CHLOE.name} ${USERS.CHLOE.surname}`}
-                </div>
-                <div className="text-muted">
-                  <small>{USERS.CHLOE.position}</small>
                 </div>
               </div>
             </div>

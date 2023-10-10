@@ -1,6 +1,5 @@
-import React from 'react';
 import { RouteProps } from 'react-router-dom';
-import { authPages, demoPagesMenu, pageLayoutTypesPagesMenu } from '../menu';
+import { authPages } from '../menu';
 import DefaultAside from '../pages/_layout/_asides/DefaultAside';
 
 const asides: RouteProps[] = [

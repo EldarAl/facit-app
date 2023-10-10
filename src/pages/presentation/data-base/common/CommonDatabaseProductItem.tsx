@@ -1,26 +1,12 @@
-import React, { FC } from 'react';
-import { ApexOptions } from 'apexcharts';
+import { FC } from 'react';
+import Button from '../../../../components/bootstrap/Button';
 import Card, {
-	CardActions,
 	CardBody,
 	CardFooter,
 	CardHeader,
 	CardLabel,
-	CardSubTitle,
-	CardTitle,
+	CardTitle
 } from '../../../../components/bootstrap/Card';
-import Button from '../../../../components/bootstrap/Button';
-import Chart from '../../../../components/extras/Chart';
-import Dropdown, {
-	DropdownItem,
-	DropdownMenu,
-	DropdownToggle,
-} from '../../../../components/bootstrap/Dropdown';
-import Badge from '../../../../components/bootstrap/Badge';
-import { priceFormat } from '../../../../helpers/helpers';
-import showNotification from '../../../../components/extras/showNotification';
-import Icon from '../../../../components/icon/Icon';
-import { demoPagesMenu } from '../../../../menu';
 import useDarkMode from '../../../../hooks/useDarkMode';
 import useLang from '../../../../hooks/useLang';
 

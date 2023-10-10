@@ -1,9 +1,6 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import PlanLogo from '../../../../assets/img/abstract/beveled-cube.png';
 import USERS from '../../../../common/data/userDummyData';
-import { demoPagesMenu } from '../../../../menu';
 import UserContact from '../../../../components/UserContact';
-import PlanLogo from '../../../../assets/img/abstract/beveled-cube.png'
 import useLang from '../../../../hooks/useLang';
 const CommonDashboardUserCard = () => {
 

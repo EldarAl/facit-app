@@ -1,21 +1,18 @@
-import React, { FC, useCallback, useState } from 'react';
 import classNames from 'classnames';
 import { useFormik } from 'formik';
+import { FC, useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Badge from '../../../components/bootstrap/Badge';
+import Card, { CardBody, CardTitle } from '../../../components/bootstrap/Card';
 import Page from '../../../layout/Page/Page';
 import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import Input from '../../../components/bootstrap/forms/Input';
-import Button from '../../../components/bootstrap/Button';
-import Select from '../../../components/bootstrap/forms/Select';
-import Card, { CardBody, CardTitle } from '../../../components/bootstrap/Card';
-import Badge from '../../../components/bootstrap/Badge';
 
-import data, { CATEGORIES, TTags } from './helper/dummyKnowledgeData';
-import { demoPagesMenu, pageLayoutTypesPagesMenu } from '../../../menu';
 import useDarkMode from '../../../hooks/useDarkMode';
-import useTourStep from '../../../hooks/useTourStep';
-import { TColor } from '../../../type/color-type';
 import useLang from '../../../hooks/useLang';
+import useTourStep from '../../../hooks/useTourStep';
+import { pageLayoutTypesPagesMenu } from '../../../menu';
+import { TColor } from '../../../type/color-type';
+import data, { TTags } from './helper/dummyKnowledgeData';
 
 interface IItemProps {
 	id: string | number;

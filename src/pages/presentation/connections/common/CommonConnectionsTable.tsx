@@ -1,7 +1,13 @@
-import React, { FC, useState } from "react";
 import classNames from "classnames";
 import dayjs from "dayjs";
-import { FormikHelpers, useFormik } from "formik";
+import { FC, useState } from "react";
+import data from "../../../../common/data/dummyEventsData";
+import EVENT_STATUS from "../../../../common/data/enumEventStatus";
+import PaginationButtons, {
+  PER_COUNT,
+  dataPagination,
+} from "../../../../components/PaginationButtons";
+import Button from "../../../../components/bootstrap/Button";
 import Card, {
   CardActions,
   CardBody,
@@ -9,44 +15,21 @@ import Card, {
   CardLabel,
   CardTitle,
 } from "../../../../components/bootstrap/Card";
-import Button from "../../../../components/bootstrap/Button";
-import { priceFormat } from "../../../../helpers/helpers";
 import Dropdown, {
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
 } from "../../../../components/bootstrap/Dropdown";
-import Icon from "../../../../components/icon/Icon";
-import OffCanvas, {
-  OffCanvasBody,
-  OffCanvasHeader,
-  OffCanvasTitle,
-} from "../../../../components/bootstrap/OffCanvas";
-import FormGroup from "../../../../components/bootstrap/forms/FormGroup";
-import Input from "../../../../components/bootstrap/forms/Input";
-import Textarea from "../../../../components/bootstrap/forms/Textarea";
-import Checks from "../../../../components/bootstrap/forms/Checks";
-import Popovers from "../../../../components/bootstrap/Popovers";
-import data from "../../../../common/data/dummyEventsData";
-import USERS from "../../../../common/data/userDummyData";
-import EVENT_STATUS from "../../../../common/data/enumEventStatus";
-import Avatar from "../../../../components/Avatar";
-import PaginationButtons, {
-  dataPagination,
-  PER_COUNT,
-} from "../../../../components/PaginationButtons";
-import useSortableData from "../../../../hooks/useSortableData";
-import useDarkMode from "../../../../hooks/useDarkMode";
-import Select from "../../../../components/bootstrap/forms/Select";
-import HardSharpDonut from "../../../../assets/img/abstract/hald-sharp-donut.png";
-import CommonDatabaseProductItem from "./CommonDatabaseProductItem";
 import Modal, {
   ModalBody,
   ModalFooter,
   ModalHeader,
   ModalTitle,
 } from "../../../../components/bootstrap/Modal";
+import Icon from "../../../../components/icon/Icon";
+import useDarkMode from "../../../../hooks/useDarkMode";
 import useLang from "../../../../hooks/useLang";
+import useSortableData from "../../../../hooks/useSortableData";
 
 interface ICommonConnectionsTableProps {
   isFluid?: boolean;
@@ -76,64 +59,31 @@ const CommonConnectionsTable: FC<ICommonConnectionsTableProps> = ({
               {useLang("Connections")}
             </CardTitle>
           </CardLabel>
-          <CardActions>
-            <Button
-              color="info"
-              icon="CloudDownload"
-              isLight
-              tag="a"
-              to="/somefile.txt"
-              target="_blank"
-              download
-            >
-              {useLang("Export")}
-            </Button>
-          </CardActions>
         </CardHeader>
         <CardBody className="table-responsive" isScrollable={isFluid}>
           <table className="table table-modern">
             <thead>
               <tr>
-                <th>#</th>
-                <th>{useLang("Connection")}</th>
-                <th
-                  onClick={() => requestSort("date")}
-                  className="cursor-pointer text-decoration-underline"
+                <th className="text-center">#</th>
+                <th className="text-center">{useLang("Connection")}</th>
+                <th className="text-center"
+                  // onClick={() => requestSort("date")}
+                  // className="cursor-pointer text-decoration-underline"
                 >
-                  {`${useLang("Date")} / ${useLang("Time")}`}
-                  <Icon
-                    size="lg"
-                    className={getClassNamesFor("date")}
-                    icon="FilterList"
-                  />
+                  {useLang("Date added")} 
                 </th>
-                <th>{useLang("Active Streams")}</th>
-                <th>{useLang("Status")}</th>
+                <th className="text-center">{useLang("Active Streams")}</th>
+                <th className="text-center">{useLang("Status")}</th>
                 {withActions && <td />}
               </tr>
             </thead>
             <tbody>
               {dataPagination(items, currentPage, perPage).map((item) => (
                 <tr key={item.id}>
-                  <td>{item.id}</td>
-                  <td>{item.service.name}</td>
-                  <td>
-                    <div className="d-flex align-items-center">
-                      <span
-                        className={classNames(
-                          "badge",
-                          "border border-2",
-                          [`border-${themeStatus}`],
-                          "rounded-circle",
-                          "bg-success",
-                          "p-2 me-2",
-                          `bg-${item.status.color}`
-                        )}
-                      >
-                        <span className="visually-hidden">
-                          {item.status.name}
-                        </span>
-                      </span>
+                  <td className="text-center">{item.id}</td>
+                  <td className="text-center">{item.service.name}</td>
+                  <td className="text-center">
+                    <div className="d-flex align-items-center justify-content-center">
                       <span className="text-nowrap">
                         {dayjs(`${item.date} ${item.time}`).format(
                           "MMM Do YYYY, h:mm a"
@@ -141,8 +91,8 @@ const CommonConnectionsTable: FC<ICommonConnectionsTableProps> = ({
                       </span>
                     </div>
                   </td>
-                  <td>{item.payment}</td>
-                  <td>
+                  <td className="text-center">{item.payment}</td>
+                  <td className="text-center">
                     <Dropdown>
                       <DropdownToggle hasIcon={false}>
                         <Button
@@ -171,7 +121,7 @@ const CommonConnectionsTable: FC<ICommonConnectionsTableProps> = ({
                   </td>
                   {withActions && (
                     <td>
-                      <div className="row g-3">
+                      <div className="row g-3 justify-content-end">
                         <div className="col-auto">
                           <Button
                             isOutline={!darkModeStatus}

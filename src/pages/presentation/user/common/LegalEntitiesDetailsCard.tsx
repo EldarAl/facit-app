@@ -1,11 +1,11 @@
-import Card, { CardBody, CardFooter, CardFooterLeft, CardFooterRight, CardHeader, CardLabel, CardTitle } from '../../../../components/bootstrap/Card'
-import useLang from '../../../../hooks/useLang'
+import { useFormik } from 'formik'
 import Button from '../../../../components/bootstrap/Button'
+import Card, { CardBody, CardFooter, CardFooterLeft, CardFooterRight, CardHeader, CardLabel, CardTitle } from '../../../../components/bootstrap/Card'
 import FormGroup from '../../../../components/bootstrap/forms/FormGroup'
 import Input from '../../../../components/bootstrap/forms/Input'
-import { useFormik } from 'formik'
 import showNotification from '../../../../components/extras/showNotification'
 import Icon from '../../../../components/icon/Icon'
+import useLang from '../../../../hooks/useLang'
 import validateAddress from '../helper/editPageAddressValidate'
 const LegalEntitiesDetailsCard = () => {
 

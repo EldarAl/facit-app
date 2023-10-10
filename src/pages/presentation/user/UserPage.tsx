@@ -1,69 +1,37 @@
-import React, { useEffect, useState } from "react";
-import { useFormik } from "formik";
-import {
-  Calendar,
-  dayjsLocalizer,
-  View as TView,
-  Views,
-} from "react-big-calendar";
 import classNames from "classnames";
 import dayjs from "dayjs";
-import { Calendar as DatePicker } from "react-date-range";
+import { useState } from "react";
+import {
+  View as TView,
+  Views,
+  dayjsLocalizer
+} from "react-big-calendar";
 import { useNavigate } from "react-router-dom";
-import SubHeader, {
-  SubHeaderLeft,
-  SubHeaderRight,
-  SubheaderSeparator,
-} from "../../../layout/SubHeader/SubHeader";
-import Button, { ButtonGroup } from "../../../components/bootstrap/Button";
-import Page from "../../../layout/Page/Page";
+import eventList, { IEvents } from "../../../common/data/events";
+import USERS from "../../../common/data/userDummyData";
+import Avatar from "../../../components/Avatar";
+import Button from "../../../components/bootstrap/Button";
 import Card, {
-  CardActions,
   CardBody,
-  CardFooter,
-  CardFooterLeft,
-  CardFooterRight,
   CardHeader,
   CardLabel,
   CardSubTitle,
-  CardTitle,
+  CardTitle
 } from "../../../components/bootstrap/Card";
-import Avatar from "../../../components/Avatar";
-import User1Webp from "../../../assets/img/wanna/wanna2.webp";
-import User1Img from "../../../assets/img/wanna/wanna2.png";
-import Input from "../../../components/bootstrap/forms/Input";
-import FormGroup from "../../../components/bootstrap/forms/FormGroup";
-import CommonDesc from "../../../common/other/CommonDesc";
-import PageWrapper from "../../../layout/PageWrapper/PageWrapper";
-import Icon from "../../../components/icon/Icon";
-import { priceFormat } from "../../../helpers/helpers";
-import validate from "./helper/editPagesValidate";
-import validateAddress from "./helper/editPageAddressValidate";
-import eventList, { IEvents } from "../../../common/data/events";
 import {
-  CalendarTodayButton,
-  CalendarViewModeButtons,
   getLabel,
   getUnitType,
-  getViews,
+  getViews
 } from "../../../components/extras/calendarHelper";
-import Select from "../../../components/bootstrap/forms/Select";
-import CommonMyWallet from "../../_common/CommonMyWallet";
-import Popovers from "../../../components/bootstrap/Popovers";
-import USERS from "../../../common/data/userDummyData";
-import OffCanvas, {
-  OffCanvasBody,
-  OffCanvasHeader,
-  OffCanvasTitle,
-} from "../../../components/bootstrap/OffCanvas";
-import Checks, {
-  ChecksGroup,
-} from "../../../components/bootstrap/forms/Checks";
-import showNotification from "../../../components/extras/showNotification";
-import useDarkMode from "../../../hooks/useDarkMode";
-import { TColor } from "../../../type/color-type";
-import Label from "../../../components/bootstrap/forms/Label";
+import Icon from "../../../components/icon/Icon";
 import useLang from "../../../hooks/useLang";
+import Page from "../../../layout/Page/Page";
+import PageWrapper from "../../../layout/PageWrapper/PageWrapper";
+import SubHeader, {
+  SubHeaderLeft,
+  SubheaderSeparator
+} from "../../../layout/SubHeader/SubHeader";
+import { TColor } from "../../../type/color-type";
 import AccountDetailCard from "./common/AccountDetailCard";
 import LegalEntitiesDetailsCard from "./common/LegalEntitiesDetailsCard";
 import NotificationsDetailsCard from "./common/NotificationsDetailsCard";
@@ -186,11 +154,10 @@ const UserPage = () => {
             {useLang("Back")}
           </Button>
           <SubheaderSeparator />
-          <Avatar srcSet={User1Webp} src={User1Img} size={32} />
+          <Avatar srcSet={USERS.CHLOE.srcSet} src={USERS.CHLOE.src} size={32} />
           <span>
-            <strong>Timothy J. Doe</strong>
+            <strong> {`${USERS.CHLOE.name} ${USERS.CHLOE.surname}`}</strong>
           </span>
-          <span className="text-muted">{useLang("Edit User")}</span>
         </SubHeaderLeft>
       </SubHeader>
       <Page container="fluid">

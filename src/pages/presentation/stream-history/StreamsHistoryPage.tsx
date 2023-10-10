@@ -1,24 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { DateRangePicker } from "react-date-range";
-import dayjs from "dayjs";
 import { useTour } from "@reactour/tour";
+import classNames from "classnames";
+import dayjs from "dayjs";
+import { useEffect, useState } from "react";
+import { DateRangePicker } from "react-date-range";
+import Button from "../../../components/bootstrap/Button";
+import Popovers from "../../../components/bootstrap/Popovers";
+import Select from "../../../components/bootstrap/forms/Select";
+import Icon from "../../../components/icon/Icon";
+import useDarkMode from "../../../hooks/useDarkMode";
+import useLang from "../../../hooks/useLang";
+import Page from "../../../layout/Page/Page";
 import PageWrapper from "../../../layout/PageWrapper/PageWrapper";
 import SubHeader, {
   SubHeaderLeft,
   SubHeaderRight,
 } from "../../../layout/SubHeader/SubHeader";
-import Page from "../../../layout/Page/Page";
-import Button from "../../../components/bootstrap/Button";
-import Popovers from "../../../components/bootstrap/Popovers";
-import Icon from "../../../components/icon/Icon";
 import CommonSalePerformance from "../../_common/CRMDashboard/CommonSalePerformance";
-import CommonTopStreams from "../../_common/CRMDashboard/CommonTopStreams";
 import CommonStreamLaunchHistory from "../../_common/CRMDashboard/CommonStreamLaunchHistory";
-import CommonIncome from "../../_common/CRMDashboard/CommonIncome";
-import useLang from "../../../hooks/useLang";
-import classNames from "classnames";
-import Select from "../../../components/bootstrap/forms/Select";
-import useDarkMode from "../../../hooks/useDarkMode";
+import CommonTopStreams from "../../_common/CRMDashboard/CommonTopStreams";
 
 const StreamsHistoryPage = () => {
   const { darkModeStatus } = useDarkMode();

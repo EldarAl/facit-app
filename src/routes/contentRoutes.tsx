@@ -1,10 +1,10 @@
-import React, { lazy } from "react";
+import { lazy } from "react";
 import {
   authPages,
   dashboardPagesMenu,
   demoPagesMenu,
   pageLayoutTypesPagesMenu,
-	pages,
+  pages,
 } from "../menu";
 
 

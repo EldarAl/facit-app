@@ -1,27 +1,25 @@
-import PageWrapper from "../../../layout/PageWrapper/PageWrapper";
-import Page from "../../../layout/Page/Page";
-import CommonDatabaseProductItem from "./common/CommonDatabaseProductItem";
+import { FormikHelpers, useFormik } from "formik";
+import { useState } from "react";
 import BeveledCone from "../../../assets/img/abstract/beveled-cone.png";
 import CloudBall from "../../../assets/img/abstract/cloud-ball.png";
-import Quadrilateral from "../../../assets/img/abstract/quadrilateral.png";
 import HardSharpDonut from "../../../assets/img/abstract/hald-sharp-donut.png";
-import CommonDatabaseTable from "./common/CommonDatabaseTable";
-import useLang from "../../../hooks/useLang";
+import Quadrilateral from "../../../assets/img/abstract/quadrilateral.png";
+import Button from "../../../components/bootstrap/Button";
+import Card, { CardBody, CardFooter } from "../../../components/bootstrap/Card";
 import OffCanvas, {
   OffCanvasBody,
   OffCanvasHeader,
   OffCanvasTitle,
 } from "../../../components/bootstrap/OffCanvas";
-import Button from "../../../components/bootstrap/Button";
-import FormGroup from "../../../components/bootstrap/forms/FormGroup";
-import Select from "../../../components/bootstrap/forms/Select";
-import classNames from "classnames";
-import Input from "../../../components/bootstrap/forms/Input";
-import { useState } from "react";
-import useDarkMode from "../../../hooks/useDarkMode";
-import { FormikHelpers, useFormik } from "formik";
-import Card, { CardBody, CardFooter } from "../../../components/bootstrap/Card";
 import Checks from "../../../components/bootstrap/forms/Checks";
+import FormGroup from "../../../components/bootstrap/forms/FormGroup";
+import Input from "../../../components/bootstrap/forms/Input";
+import useDarkMode from "../../../hooks/useDarkMode";
+import useLang from "../../../hooks/useLang";
+import Page from "../../../layout/Page/Page";
+import PageWrapper from "../../../layout/PageWrapper/PageWrapper";
+import CommonDatabaseProductItem from "./common/CommonDatabaseProductItem";
+import CommonDatabaseTable from "./common/CommonDatabaseTable";
 
 const data: {
   id: number;

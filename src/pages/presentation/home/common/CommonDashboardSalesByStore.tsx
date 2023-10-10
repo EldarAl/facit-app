@@ -1,6 +1,11 @@
-import React, { useState } from 'react';
-import dayjs from 'dayjs';
 import { ApexOptions } from 'apexcharts';
+import dayjs from 'dayjs';
+import { useState } from 'react';
+import Company1 from '../../../../assets/logos/company1.png';
+import Company2 from '../../../../assets/logos/company2.png';
+import Company3 from '../../../../assets/logos/company3.png';
+import Company4 from '../../../../assets/logos/company4.png';
+import Button, { ButtonGroup } from '../../../../components/bootstrap/Button';
 import Card, {
 	CardActions,
 	CardBody,
@@ -9,12 +14,7 @@ import Card, {
 	CardSubTitle,
 	CardTitle,
 } from '../../../../components/bootstrap/Card';
-import Button, { ButtonGroup } from '../../../../components/bootstrap/Button';
 import Chart from '../../../../components/extras/Chart';
-import Company1 from '../../../../assets/logos/company1.png';
-import Company2 from '../../../../assets/logos/company2.png';
-import Company3 from '../../../../assets/logos/company3.png';
-import Company4 from '../../../../assets/logos/company4.png';
 import useDarkMode from '../../../../hooks/useDarkMode';
 import useLang from '../../../../hooks/useLang';
 
@@ -375,13 +375,10 @@ const CommonDashboardSalesByStore = () => {
 	return (
 		<Card stretch>
 			<CardHeader>
-				<CardLabel icon='ReceiptLong'>
+				<CardLabel icon='stream'>
 					<CardTitle tag='div' className='h5'>
 						{useLang("Streams")}
 					</CardTitle>
-					<CardSubTitle tag='div' className='h6'>
-						{useLang("Reports")}
-					</CardSubTitle>
 				</CardLabel>
 				<CardActions>
 					<ButtonGroup>

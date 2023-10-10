@@ -1,16 +1,11 @@
-import React, { useState } from 'react';
-import classNames from 'classnames';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import SubHeader, { SubHeaderLeft, SubheaderSeparator } from '../../../layout/SubHeader/SubHeader';
-import Page from '../../../layout/Page/Page';
-import { demoPagesMenu } from '../../../menu';
-import Card, { CardBody, CardHeader } from '../../../components/bootstrap/Card';
-import Icon from '../../../components/icon/Icon';
+import { useState } from 'react';
 import Button from '../../../components/bootstrap/Button';
+import Card, { CardBody } from '../../../components/bootstrap/Card';
+import Icon from '../../../components/icon/Icon';
 import useDarkMode from '../../../hooks/useDarkMode';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import ScrollspyNav from '../../../components/bootstrap/ScrollspyNav';
 import useLang from '../../../hooks/useLang';
+import Page from '../../../layout/Page/Page';
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
 
 const PlansPage = () => {
 	const { darkModeStatus } = useDarkMode();

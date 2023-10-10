@@ -1,25 +1,24 @@
-import PageWrapper from "../../../layout/PageWrapper/PageWrapper";
-import Page from "../../../layout/Page/Page";
-import CommonDatabaseProductItem from "./common/CommonDatabaseProductItem";
+import classNames from "classnames";
+import { FormikHelpers, useFormik } from "formik";
 import BeveledCone from "../../../assets/img/abstract/beveled-cone.png";
 import CloudBall from "../../../assets/img/abstract/cloud-ball.png";
-import Quadrilateral from "../../../assets/img/abstract/quadrilateral.png";
 import HardSharpDonut from "../../../assets/img/abstract/hald-sharp-donut.png";
-import CommonConnectionsTable from "./common/CommonConnectionsTable";
+import Quadrilateral from "../../../assets/img/abstract/quadrilateral.png";
 import OffCanvas, {
   OffCanvasBody,
   OffCanvasHeader,
   OffCanvasTitle,
 } from "../../../components/bootstrap/OffCanvas";
-import classNames from "classnames";
-import { FormikHelpers, useFormik } from "formik";
 import useDarkMode from "../../../hooks/useDarkMode";
-
+import Page from "../../../layout/Page/Page";
+import PageWrapper from "../../../layout/PageWrapper/PageWrapper";
+import CommonConnectionsTable from "./common/CommonConnectionsTable";
+import CommonDatabaseProductItem from "./common/CommonDatabaseProductItem";
 import { useState } from "react";
 import Button from "../../../components/bootstrap/Button";
 import FormGroup from "../../../components/bootstrap/forms/FormGroup";
-import Select from "../../../components/bootstrap/forms/Select";
 import Input from "../../../components/bootstrap/forms/Input";
+import Select from "../../../components/bootstrap/forms/Select";
 import useLang from "../../../hooks/useLang";
 const data: {
   id: number;

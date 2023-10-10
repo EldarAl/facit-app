@@ -1,8 +1,15 @@
-import React, { FC, useState } from 'react';
-import dayjs from 'dayjs';
 import { ApexOptions } from 'apexcharts';
-import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+import dayjs from 'dayjs';
+import { FC, useState } from 'react';
+import { Link } from 'react-router-dom';
+import data from '../../../../common/data/dummyProductData';
+import PaginationButtons, {
+	PER_COUNT,
+	dataPagination,
+} from '../../../../components/PaginationButtons';
+import Badge from '../../../../components/bootstrap/Badge';
+import Button from '../../../../components/bootstrap/Button';
 import Card, {
 	CardActions,
 	CardBody,
@@ -15,18 +22,10 @@ import Dropdown, {
 	DropdownMenu,
 	DropdownToggle,
 } from '../../../../components/bootstrap/Dropdown';
-import Button from '../../../../components/bootstrap/Button';
-import Icon from '../../../../components/icon/Icon';
-import PaginationButtons, {
-	dataPagination,
-	PER_COUNT,
-} from '../../../../components/PaginationButtons';
-import data from '../../../../common/data/dummyProductData';
-import useSortableData from '../../../../hooks/useSortableData';
-import useDarkMode from '../../../../hooks/useDarkMode';
-import { demoPagesMenu } from '../../../../menu';
 import Chart from '../../../../components/extras/Chart';
-import Badge from '../../../../components/bootstrap/Badge';
+import Icon from '../../../../components/icon/Icon';
+import useDarkMode from '../../../../hooks/useDarkMode';
+import useSortableData from '../../../../hooks/useSortableData';
 
 interface ITableRowProps {
 	id: string;

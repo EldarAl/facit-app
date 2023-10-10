@@ -1,23 +1,21 @@
-import React, { FC, useCallback, useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import PropTypes from "prop-types";
 import classNames from "classnames";
 import { useFormik } from "formik";
-import PageWrapper from "../../../layout/PageWrapper/PageWrapper";
-import Page from "../../../layout/Page/Page";
-import Card, { CardBody } from "../../../components/bootstrap/Card";
-import FormGroup from "../../../components/bootstrap/forms/FormGroup";
-import Input from "../../../components/bootstrap/forms/Input";
-import Button from "../../../components/bootstrap/Button";
-import Logo from "../../../components/Logo";
-import useDarkMode from "../../../hooks/useDarkMode";
-import AuthContext from "../../../contexts/authContext";
+import PropTypes from "prop-types";
+import { FC, useCallback, useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import USERS, {
   getUserDataWithUsername,
 } from "../../../common/data/userDummyData";
-import Spinner from "../../../components/bootstrap/Spinner";
-import Alert from "../../../components/bootstrap/Alert";
+import Logo from "../../../components/Logo";
+import Button from "../../../components/bootstrap/Button";
+import Card, { CardBody } from "../../../components/bootstrap/Card";
+import FormGroup from "../../../components/bootstrap/forms/FormGroup";
+import Input from "../../../components/bootstrap/forms/Input";
+import AuthContext from "../../../contexts/authContext";
+import useDarkMode from "../../../hooks/useDarkMode";
 import useLang from "../../../hooks/useLang";
+import Page from "../../../layout/Page/Page";
+import PageWrapper from "../../../layout/PageWrapper/PageWrapper";
 
 interface ILoginHeaderProps {
   isNewUser?: boolean;

@@ -1,26 +1,20 @@
-import PageWrapper from "../../../layout/PageWrapper/PageWrapper";
-import Page from "../../../layout/Page/Page";
-import BeveledCone from "../../../assets/img/abstract/beveled-cone.png";
-import CloudBall from "../../../assets/img/abstract/cloud-ball.png";
-import Quadrilateral from "../../../assets/img/abstract/quadrilateral.png";
-import HardSharpDonut from "../../../assets/img/abstract/hald-sharp-donut.png";
-import CommonDatabaseConnectionsTable from "./common/CommonDatabaseConnectionsTable";
-import Input from "../../../components/bootstrap/forms/Input";
-import Button from "../../../components/bootstrap/Button";
-import { useFormik } from "formik";
 import classNames from "classnames";
-import useDarkMode from "../../../hooks/useDarkMode";
-import Select from "../../../components/bootstrap/forms/Select";
-import Icon from "../../../components/icon/Icon";
-import useLang from "../../../hooks/useLang";
+import { useFormik } from "formik";
+import { useState } from "react";
+import Button from "../../../components/bootstrap/Button";
+import Card, { CardBody } from "../../../components/bootstrap/Card";
 import OffCanvas, {
   OffCanvasBody,
   OffCanvasHeader,
   OffCanvasTitle,
 } from "../../../components/bootstrap/OffCanvas";
-import FormGroup from "../../../components/bootstrap/forms/FormGroup";
-import { useState } from "react";
-import Card, { CardBody } from "../../../components/bootstrap/Card";
+import Select from "../../../components/bootstrap/forms/Select";
+import Icon from "../../../components/icon/Icon";
+import useDarkMode from "../../../hooks/useDarkMode";
+import useLang from "../../../hooks/useLang";
+import Page from "../../../layout/Page/Page";
+import PageWrapper from "../../../layout/PageWrapper/PageWrapper";
+import CommonStreamsTable from "./common/CommonStreamsTable";
 
 const StreamsPage = () => {
   const data: {
@@ -173,7 +167,7 @@ const StreamsPage = () => {
             </form>
           </div>
 
-          <CommonDatabaseConnectionsTable
+          <CommonStreamsTable
             handleStreamEdit={() => {
               setStreamFormCanvas(true);
               setIsEdit(true);
@@ -204,7 +198,7 @@ const StreamsPage = () => {
                     list={data.map((c) => {
                       return { value: c.id, text: c.name };
                     })}
-                    className={classNames("rounded-1", {
+                    className={classNames("rounded-1 fs-6", {
                       "bg-white": !darkModeStatus,
                     })}
                   />
@@ -223,7 +217,7 @@ const StreamsPage = () => {
                     list={data.map((c) => {
                       return { value: c.id, text: c.name };
                     })}
-                    className={classNames("rounded-1", {
+                    className={classNames("rounded-1 fs-6", {
                       "bg-white": !darkModeStatus,
                     })}
                   />
@@ -249,7 +243,7 @@ const StreamsPage = () => {
                           list={data.map((c) => {
                             return { value: c.id, text: c.name };
                           })}
-                          className={classNames("rounded-1", {
+                          className={classNames("rounded-1 fs-6", {
                             "bg-white": !darkModeStatus,
                           })}
                         />
@@ -273,7 +267,7 @@ const StreamsPage = () => {
                           list={data.map((c) => {
                             return { value: c.id, text: c.name };
                           })}
-                          className={classNames("rounded-1", {
+                          className={classNames("rounded-1 fs-6", {
                             "bg-white": !darkModeStatus,
                           })}
                         />
